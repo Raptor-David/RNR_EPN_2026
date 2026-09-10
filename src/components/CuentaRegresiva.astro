@@ -1,8 +1,33 @@
 ---
 interface Props {
   revelaEn: string;
+  /**
+   * Intensidad del desenfoque, en píxeles, que se aplica sobre el contenido
+   * oculto detrás de la cortina. 7 alcanza para texto (Programa); las fotos
+   * de personas (Ponentes) necesitan mucho más para que no se reconozca a
+   * nadie, incluso en pantallas grandes.
+   */
+  blur?: number;
+  /** Texto pequeño en mayúsculas, arriba de la tarjeta. */
+  kicker?: string;
+  /** Frase que explica qué se revela en la fecha indicada. */
+  texto?: string;
+  /**
+   * Si es true, la tarjeta deja de ser una tarjeta pequeña flotando sobre
+   * el desenfoque y pasa a ocupar el 100% del ancho y alto del componente,
+   * sin dejar ningún borde sin cubrir. Pensado para secciones con fotos
+   * (Ponentes), donde no puede quedar ni un pixel de imagen a la vista.
+   */
+  pantallaCompleta?: boolean;
 }
-const { revelaEn } = Astro.props;
+
+const {
+  revelaEn,
+  blur = 7,
+  kicker = 'Programa preliminar',
+  texto = 'El detalle de horarios se publica el',
+  pantallaCompleta = false,
+} = Astro.props;
 
 const unidades = [
   { clave: 'dias', etiqueta: 'días' },
@@ -12,24 +37,33 @@ const unidades = [
 ];
 ---
 
-<div class="cortina" data-cortina data-revela-en={revelaEn} role="status" aria-live="polite">
-  <div class="tarjeta">
-    <p class="tarjeta__kicker">Programa preliminar</p>
-    <p class="tarjeta__texto">El detalle de horarios se publica el</p>
-    <p class="tarjeta__fecha">miércoles 23 de septiembre · 12h00</p>
+<div
+  class="cortina"
+  data-cortina
+  data-revela-en={revelaEn}
+  style={`--cortina-blur:${blur}px`}
+  role="status"
+  aria-live="polite"
+>
+  <div class:list={['tarjeta', pantallaCompleta && 'tarjeta--completa']}>
+    <div class="tarjeta__interior">
+      <p class="tarjeta__kicker">{kicker}</p>
+      <p class="tarjeta__texto">{texto}</p>
+      <p class="tarjeta__fecha">miércoles 23 de septiembre · 12h00</p>
 
-    <div class="reloj">
-      {
-        unidades.map((u) => (
-          <div class="reloj__casilla">
-            <span class="reloj__numero" data-unidad={u.clave}>--</span>
-            <span class="reloj__etiqueta">{u.etiqueta}</span>
-          </div>
-        ))
-      }
+      <div class="reloj">
+        {
+          unidades.map((u) => (
+            <div class="reloj__casilla">
+              <span class="reloj__numero" data-unidad={u.clave}>--</span>
+              <span class="reloj__etiqueta">{u.etiqueta}</span>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="tarjeta__pie">Se revela solo, sin recargar la página.</p>
     </div>
-
-    <p class="tarjeta__pie">Se revela solo, sin recargar la página.</p>
   </div>
 </div>
 
@@ -42,9 +76,9 @@ const unidades = [
     align-items: flex-start;
     justify-content: center;
     padding: clamp(20px, 8vw, 48px) 16px;
-    background: rgba(246, 247, 248, 0.5);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
+    background: rgba(246, 247, 248, 0.55);
+    backdrop-filter: blur(var(--cortina-blur, 7px));
+    -webkit-backdrop-filter: blur(var(--cortina-blur, 7px));
     transition:
       opacity 600ms ease,
       backdrop-filter 600ms ease;
@@ -81,6 +115,34 @@ const unidades = [
     max-width: 420px;
     width: 100%;
     text-align: center;
+  }
+
+  /*
+   * Variante "pantalla completa": en vez de flotar como tarjeta pequeña,
+   * cubre el 100% del espacio de la cortina (que a su vez ya cubre el
+   * 100% del componente, gracias a inset:0). Así no queda ni un borde de
+   * la cuadrícula de ponentes a la vista, en ningún tamaño de pantalla.
+   */
+  .tarjeta--completa {
+    position: absolute;
+    inset: 0;
+    top: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    box-shadow: none;
+    border-top: none;
+    border-bottom: 4px solid var(--azul-700);
+  }
+
+  .tarjeta__interior {
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .tarjeta__kicker {

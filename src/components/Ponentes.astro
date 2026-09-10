@@ -1,5 +1,14 @@
 ---
 import { ponentes } from '../data/ponentes';
+import { revelacionPrograma } from '../data/sitio';
+import CuentaRegresiva from './CuentaRegresiva.astro';
+
+/**
+ * Mismo mecanismo de doble comprobación que usa el Programa: en el build y
+ * en el navegador. Usa la misma fecha/hora de revelación (23/09, 12h00).
+ */
+const objetivo = Date.parse(revelacionPrograma);
+const yaRevelado = Number.isFinite(objetivo) && Date.now() >= objetivo;
 ---
 
 <section id="ponentes" class="seccion">
@@ -7,31 +16,63 @@ import { ponentes } from '../data/ponentes';
     <h2 class="titulo-seccion" data-anim>Charlas y ponentes</h2>
     <div class="regla" data-anim></div>
 
-    <div class="rejilla">
-      {
-        ponentes.map((p, i) => (
-          <article class="tarjeta" data-anim data-anim-delay={String(Math.min(i + 1, 4))}>
-            <img
-              class="tarjeta__foto"
-              src={p.foto}
-              alt={p.alt}
-              loading="lazy"
-              decoding="async"
-              style={`object-position:${p.encuadre ?? 'center'}`}
-            />
-            <div class="tarjeta__cuerpo">
-              <p class="tarjeta__nombre">{p.nombre}</p>
-              <p class="tarjeta__cargo">{p.cargo}</p>
-              <p class="tarjeta__charla">{p.charla}</p>
-            </div>
-          </article>
-        ))
-      }
+    <div class="ponentes" data-bloqueado={yaRevelado ? undefined : ''}>
+      {!yaRevelado && (
+        <CuentaRegresiva
+          revelaEn={revelacionPrograma}
+          blur={100}
+          kicker="Ponentes por confirmar"
+          texto="La lista completa de ponentes se publica el"
+          pantallaCompleta
+        />
+      )}
+
+      <div class="rejilla">
+        {
+          ponentes.map((p, i) => (
+            <article class="tarjeta" data-anim data-anim-delay={String(Math.min(i + 1, 4))}>
+              <img
+                class="tarjeta__foto"
+                src={p.foto}
+                alt={p.alt}
+                loading="lazy"
+                decoding="async"
+                style={`object-position:${p.encuadre ?? 'center'}`}
+              />
+              <div class="tarjeta__cuerpo">
+                <p class="tarjeta__nombre">{p.nombre}</p>
+                <p class="tarjeta__cargo">{p.cargo}</p>
+                <p class="tarjeta__charla">{p.charla}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
 
 <style>
+  .ponentes {
+    position: relative;
+  }
+
+  /* Mientras está bloqueado, el contenido no recibe foco ni clics. */
+  .ponentes[data-bloqueado] .rejilla {
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /*
+   * Altura mínima cómoda mientras está bloqueado, para que el aviso de
+   * "pantalla completa" siempre tenga espacio de sobra y no quede
+   * apretado en pantallas con pocas tarjetas o muy bajas (responsive:
+   * escala entre 360px y 640px según el alto real del viewport).
+   */
+  .ponentes[data-bloqueado] {
+    min-height: clamp(360px, 55vh, 640px);
+  }
+
   .rejilla {
     display: grid;
     grid-template-columns: 1fr;
@@ -98,3 +139,8 @@ import { ponentes } from '../data/ponentes';
     line-height: 1.4;
   }
 </style>
+
+<script>
+  import { iniciarCuentaRegresiva } from '../lib/cuenta-regresiva';
+  iniciarCuentaRegresiva();
+</script>

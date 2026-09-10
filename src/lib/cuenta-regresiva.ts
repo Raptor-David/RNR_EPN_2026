@@ -1,5 +1,5 @@
 /**
- * Cuenta regresiva del programa.
+ * Cuenta regresiva de secciones bloqueadas (Programa, Ponentes, etc.).
  *
  * El desenfoque se levanta solo cuando llega la fecha objetivo
  * (23 de septiembre de 2026, 12h00 de Ecuador). Funciona en dos capas:
@@ -8,9 +8,12 @@
  *  2. En el navegador, este módulo la retira en vivo al cumplirse la hora,
  *     sin que nadie tenga que recargar.
  *
- * Nota honesta: es una cortina visual, no un control de acceso. El programa
+ * Nota honesta: es una cortina visual, no un control de acceso. El contenido
  * viaja en el HTML. Si algún dato no puede verse antes de tiempo, no debe
  * publicarse hasta esa fecha.
+ *
+ * Soporta varias cortinas en la misma página a la vez (por ejemplo,
+ * Programa y Ponentes), cada una con su propio reloj independiente.
  */
 
 type Unidad = { clave: 'dias' | 'horas' | 'minutos' | 'segundos'; valor: number };
@@ -26,9 +29,19 @@ function descomponer(ms: number): Unidad[] {
 }
 
 export function iniciarCuentaRegresiva(): void {
-  const cortina = document.querySelector<HTMLElement>('[data-cortina]');
-  if (!cortina) return;
+  // :not([data-cortina-iniciada]) evita duplicar temporizadores si el
+  // script llega a ejecutarse más de una vez para la misma cortina.
+  const cortinas = document.querySelectorAll<HTMLElement>(
+    '[data-cortina]:not([data-cortina-iniciada])',
+  );
 
+  cortinas.forEach((cortina) => {
+    cortina.setAttribute('data-cortina-iniciada', '');
+    iniciarUnaCortina(cortina);
+  });
+}
+
+function iniciarUnaCortina(cortina: HTMLElement): void {
   const objetivoIso = cortina.dataset.revelaEn ?? '';
   const objetivo = Date.parse(objetivoIso);
 
@@ -72,8 +85,7 @@ export function iniciarCuentaRegresiva(): void {
 }
 
 function revelar(cortina: HTMLElement): void {
-  const contenedor = cortina.closest<HTMLElement>('[data-programa]');
+  cortina.parentElement?.removeAttribute('data-bloqueado');
   cortina.classList.add('cortina--fuera');
-  contenedor?.removeAttribute('data-bloqueado');
   window.setTimeout(() => cortina.remove(), 700);
 }
