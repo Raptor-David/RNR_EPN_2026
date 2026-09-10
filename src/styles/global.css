@@ -1,0 +1,232 @@
+/* ==========================================================================
+   RNR 2026 — hoja base
+   Estrategia: mobile first. El bloque por defecto es el de teléfono;
+   los `@media (min-width: …)` van sumando espacio en pantallas grandes.
+   ========================================================================== */
+
+:root {
+  /* Paleta institucional IEEE */
+  --azul-900: #002855;
+  --azul-700: #00629b;
+  --azul-500: #0f7ec1;
+  --cyan: #00b5e2;
+  --ambar-borde: #b8580a;
+  --ambar-fondo: #fff4e0;
+  --ambar-texto: #7a3a06;
+  --ambar-texto-2: #8f4408;
+
+  --tinta: #2c2c2c;
+  --tinta-2: #4a5054;
+  --tinta-3: #5b6165;
+  --linea: #dcdfe2;
+  --linea-2: #eceef0;
+  --gris: #f6f7f8;
+  --gris-2: #eef1f3;
+  --blanco: #ffffff;
+
+  /* Ritmo vertical y anchos */
+  --ancho: 1200px;
+  --gutter: 16px;
+  --seccion-y: 44px;
+  --alto-cabecera: 112px;
+
+  --fuente: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --transicion: 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (min-width: 760px) {
+  :root {
+    --gutter: 32px;
+    --seccion-y: 62px;
+    --alto-cabecera: 130px;
+  }
+}
+
+@media (min-width: 1100px) {
+  :root {
+    --gutter: 48px;
+    --seccion-y: 76px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--alto-cabecera);
+  -webkit-text-size-adjust: 100%;
+
+  /* Scroll oculto pero funcional: la barra propia del navegador desaparece
+     y en su lugar queda la línea de progreso del encabezado. */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* Contenedores internos que sí desplazan (nav móvil): barra fina y discreta. */
+.scroll-fino {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+}
+.scroll-fino::-webkit-scrollbar {
+  height: 3px;
+}
+.scroll-fino::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--blanco);
+  color: var(--tinta);
+  font-family: var(--fuente);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--azul-700);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover {
+  color: var(--azul-900);
+}
+
+:focus-visible {
+  outline: 3px solid var(--azul-700);
+  outline-offset: 2px;
+}
+
+/* Área táctil mínima en móvil */
+@media (pointer: coarse) {
+  a,
+  button {
+    min-height: 44px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Utilidades de composición
+   -------------------------------------------------------------------------- */
+
+.contenedor {
+  max-width: var(--ancho);
+  margin-inline: auto;
+  width: 100%;
+}
+
+.seccion {
+  padding-block: var(--seccion-y);
+  padding-inline: var(--gutter);
+}
+
+.seccion--gris {
+  background: var(--gris);
+  border-top: 1px solid var(--linea);
+}
+
+.titulo-seccion {
+  margin: 0 0 6px;
+  font-size: clamp(24px, 3.2vw, 34px);
+  font-weight: 700;
+  color: var(--azul-700);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.regla {
+  height: 3px;
+  width: 72px;
+  background: var(--azul-700);
+  margin-bottom: 22px;
+}
+
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.saltar-al-contenido {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--blanco);
+  color: var(--azul-700);
+  padding: 12px 18px;
+  font-weight: 700;
+}
+.saltar-al-contenido:focus {
+  left: 8px;
+  top: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   Animaciones de scroll (bajando y subiendo)
+   -------------------------------------------------------------------------- */
+
+[data-anim] {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity 620ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 620ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Al subir, los bloques entran desde arriba: el movimiento acompaña al dedo. */
+[data-dir='up'] [data-anim] {
+  transform: translate3d(0, -22px, 0);
+}
+
+[data-anim].visible {
+  opacity: 1;
+  transform: none;
+}
+
+[data-anim-delay='1'] { transition-delay: 70ms; }
+[data-anim-delay='2'] { transition-delay: 140ms; }
+[data-anim-delay='3'] { transition-delay: 210ms; }
+[data-anim-delay='4'] { transition-delay: 280ms; }
+
+/* Sin JavaScript y con movimiento reducido, todo se ve de inmediato. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-anim] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

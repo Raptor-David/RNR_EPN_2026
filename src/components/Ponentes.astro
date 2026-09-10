@@ -1,0 +1,100 @@
+---
+import { ponentes } from '../data/ponentes';
+---
+
+<section id="ponentes" class="seccion">
+  <div class="contenedor">
+    <h2 class="titulo-seccion" data-anim>Charlas y ponentes</h2>
+    <div class="regla" data-anim></div>
+
+    <div class="rejilla">
+      {
+        ponentes.map((p, i) => (
+          <article class="tarjeta" data-anim data-anim-delay={String(Math.min(i + 1, 4))}>
+            <img
+              class="tarjeta__foto"
+              src={p.foto}
+              alt={p.alt}
+              loading="lazy"
+              decoding="async"
+              style={`object-position:${p.encuadre ?? 'center'}`}
+            />
+            <div class="tarjeta__cuerpo">
+              <p class="tarjeta__nombre">{p.nombre}</p>
+              <p class="tarjeta__cargo">{p.cargo}</p>
+              <p class="tarjeta__charla">{p.charla}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .rejilla {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  @media (min-width: 560px) {
+    .rejilla {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: clamp(18px, 2.4vw, 28px);
+    }
+  }
+
+  .tarjeta {
+    border: 1px solid var(--linea);
+    background: var(--blanco);
+    display: flex;
+    flex-direction: column;
+    transition:
+      transform var(--transicion),
+      box-shadow var(--transicion);
+  }
+
+  .tarjeta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(0, 40, 85, 0.12);
+  }
+
+  .tarjeta__foto {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-bottom: 1px solid var(--linea);
+    background: var(--gris);
+  }
+
+  .tarjeta__cuerpo {
+    padding: 18px 20px 22px;
+  }
+
+  .tarjeta__nombre {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--azul-900);
+    line-height: 1.25;
+  }
+
+  .tarjeta__cargo {
+    margin: 3px 0 12px;
+    font-size: 14px;
+    color: var(--tinta-3);
+    line-height: 1.45;
+  }
+
+  .tarjeta__charla {
+    margin: 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--linea-2);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--azul-700);
+    line-height: 1.4;
+  }
+</style>

@@ -1,0 +1,328 @@
+---
+import { programa } from '../data/programa';
+import { revelacionPrograma } from '../data/sitio';
+import CuentaRegresiva from './CuentaRegresiva.astro';
+
+/**
+ * Doble comprobación: en el build y en el navegador.
+ * Si el sitio se despliega después del 23/09 a las 12h00, la cortina
+ * ni siquiera se imprime en el HTML.
+ */
+const objetivo = Date.parse(revelacionPrograma);
+const yaRevelado = Number.isFinite(objetivo) && Date.now() >= objetivo;
+---
+
+<section id="programa" class="seccion seccion--gris">
+  <div class="contenedor">
+    <h2 class="titulo-seccion" data-anim>Programa</h2>
+    <div class="regla" data-anim></div>
+    <p class="intro" data-anim data-anim-delay="1">
+      Programa preliminar. Los horarios pueden ajustarse; la versión definitiva se entrega en la
+      acreditación.
+    </p>
+
+    <div class="programa" data-programa data-bloqueado={yaRevelado ? undefined : ''}>
+      {!yaRevelado && <CuentaRegresiva revelaEn={revelacionPrograma} />}
+
+      <div class="dias">
+        {
+          programa.map((dia, indice) => (
+            <article class="dia" data-anim data-anim-delay={String(Math.min(indice + 1, 4))}>
+              <header class="dia__cabecera">
+                <p class="dia__numero">{dia.numero}</p>
+                <p class="dia__fecha">{dia.fecha}</p>
+              </header>
+
+              <div class="dia__cuerpo">
+                {dia.items.map((item) =>
+                  item.tipo === 'titulo' ? (
+                    <p class="bloque">{item.texto}</p>
+                  ) : item.tipo === 'pausa' ? (
+                    <p class="pausa">{item.texto}</p>
+                  ) : (
+                    <div
+                      class:list={['fila', item.acento && `fila--${item.acento}`]}
+                    >
+                      <div class="fila__principal">
+                        <span class="fila__hora">{item.hora}</span>
+                        <div>
+                          <p class="fila__titulo">{item.titulo}</p>
+                          {item.detalle && <p class="fila__detalle">{item.detalle}</p>}
+                          {item.nota && <p class="fila__nota">{item.nota}</p>}
+                        </div>
+                      </div>
+
+                      {item.subitems && (
+                        <div class="subitems">
+                          {item.subitems.map((sub) => (
+                            <div class="subitem">
+                              <span class="subitem__hora">{sub.hora}</span>
+                              <div>
+                                <p class="subitem__titulo">{sub.titulo}</p>
+                                {sub.detalle && <p class="subitem__detalle">{sub.detalle}</p>}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ),
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro {
+    margin: 0 0 clamp(24px, 3vw, 36px);
+    font-size: 16px;
+    color: var(--tinta-3);
+  }
+
+  .programa {
+    position: relative;
+  }
+
+  /* Mientras está bloqueado, el contenido no recibe foco ni clics:
+     nadie llega por tabulación a lo que todavía no se muestra. */
+  .programa[data-bloqueado] .dias {
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .dias {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  @media (min-width: 900px) {
+    .dias {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: clamp(18px, 2.4vw, 28px);
+    }
+  }
+
+  .dia {
+    background: var(--blanco);
+    border: 1px solid var(--linea);
+  }
+
+  .dia__cabecera {
+    background: var(--azul-700);
+    padding: 14px 18px;
+  }
+
+  .dia__numero {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--blanco);
+    line-height: 1.15;
+  }
+
+  .dia__fecha {
+    margin: 2px 0 0;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #cfe2ef;
+  }
+
+  .dia__cuerpo {
+    padding: 6px 16px 18px;
+  }
+
+  @media (min-width: 480px) {
+    .dia__cuerpo {
+      padding: 6px 20px 20px;
+    }
+  }
+
+  .bloque {
+    margin: 16px 0 10px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--azul-900);
+    border-bottom: 2px solid var(--linea);
+    padding-bottom: 8px;
+  }
+
+  .pausa {
+    margin: 12px 0;
+    background: var(--gris-2);
+    padding: 9px 14px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tinta-2);
+  }
+
+  .fila {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--linea-2);
+  }
+
+  .fila__principal {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+
+  @media (min-width: 420px) {
+    .fila__principal {
+      grid-template-columns: 104px 1fr;
+      gap: 12px;
+    }
+  }
+
+  .fila__hora {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--azul-700);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 420px) {
+    .fila__hora {
+      font-size: 14px;
+    }
+  }
+
+  .fila__titulo {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--tinta);
+    line-height: 1.3;
+  }
+
+  .fila__detalle {
+    margin: 2px 0 0;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--tinta-3);
+  }
+
+  .fila__nota {
+    margin: 6px 0 0;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--tinta-3);
+    border-left: 3px solid var(--cyan);
+    padding-left: 10px;
+  }
+
+  /* Acentos */
+  .fila--ambar {
+    background: var(--ambar-fondo);
+    border-left: 6px solid var(--ambar-borde);
+    padding: 12px 14px;
+    margin: 12px 0;
+    border-bottom: none;
+  }
+
+  .fila--ambar .fila__hora {
+    color: #6e3100;
+  }
+  .fila--ambar .fila__titulo {
+    color: var(--ambar-texto);
+    font-weight: 700;
+  }
+  .fila--ambar .fila__detalle {
+    color: var(--ambar-texto-2);
+  }
+
+  .fila--cyan {
+    background: var(--gris);
+    border-left: 6px solid var(--cyan);
+    padding: 12px 14px;
+    margin: 12px 0;
+    border-bottom: none;
+  }
+
+  /* Subitems */
+  .subitems {
+    border-left: 3px solid var(--linea);
+    margin: 8px 0 2px 4px;
+    padding-left: 12px;
+  }
+
+  .fila--ambar .subitems {
+    border-left-color: #e9cfa8;
+  }
+
+  .subitem {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f2f4f5;
+  }
+
+  .fila--ambar .subitem {
+    border-bottom-color: #e9cfa8;
+  }
+
+  .subitem:last-child {
+    border-bottom: none;
+  }
+
+  @media (min-width: 420px) {
+    .subitem {
+      grid-template-columns: 84px 1fr;
+      gap: 10px;
+    }
+  }
+
+  .subitem__hora {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--azul-700);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .fila--ambar .subitem__hora {
+    color: var(--ambar-texto-2);
+    font-weight: 700;
+  }
+
+  .subitem__titulo {
+    margin: 0;
+    font-size: 15px;
+    color: var(--tinta);
+    line-height: 1.35;
+  }
+
+  .fila--ambar .subitem__titulo {
+    color: var(--ambar-texto);
+    font-weight: 600;
+  }
+
+  .subitem__detalle {
+    margin: 1px 0 0;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--tinta-3);
+  }
+
+  .fila--ambar .subitem__detalle {
+    color: var(--ambar-texto-2);
+  }
+</style>
+
+<script>
+  import { iniciarCuentaRegresiva } from '../lib/cuenta-regresiva';
+  iniciarCuentaRegresiva();
+</script>

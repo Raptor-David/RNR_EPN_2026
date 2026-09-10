@@ -1,0 +1,25 @@
+{
+  "name": "rnr-2026",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio oficial de la Reunion Nacional de Ramas Estudiantiles IEEE 2026 - Escuela Politecnica Nacional, Quito.",
+  "engines": {
+    "node": ">=18.20.8"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "build:fast": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.14.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.9.2"
+  }
+}

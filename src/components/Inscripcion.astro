@@ -1,0 +1,300 @@
+---
+import { inscripcion, sitio } from '../data/sitio';
+---
+
+<section id="inscripcion" class="cta" data-cta-seccion>
+  <div class="cta__trama" aria-hidden="true"></div>
+
+  <div class="contenedor cta__cuerpo">
+    <div class="cta__texto" data-anim>
+      <p class="cta__kicker">Inscripciones abiertas</p>
+      <h2 class="cta__titulo">Asegura tu cupo en la RNR Quito 2026</h2>
+      <p class="cta__bajada">
+        {sitio.fechasLargas} · Escuela Politécnica Nacional. El registro se realiza en el
+        formulario oficial del comité organizador.
+      </p>
+
+      <ul class="cta__puntos">
+        <li>Cupo limitado a {inscripcion.cupos}</li>
+        <li>Incluye kit, alimentación y actividades del programa</li>
+        <li>Confirmación por correo tras completar el formulario</li>
+      </ul>
+    </div>
+
+    <div class="cta__panel" data-anim data-anim-delay="1">
+      <p class="cta__panel-titulo">Formulario oficial</p>
+      <p class="cta__panel-texto">
+        Toma menos de tres minutos. Al enviarlo recibirás la confirmación y los siguientes pasos.
+      </p>
+
+      <a
+        class="cta__boton"
+        href={inscripcion.url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>Ir al formulario</span>
+        <span class="cta__flecha" aria-hidden="true">→</span>
+      </a>
+
+      <p class="cta__aviso">
+        Se abre en una pestaña nueva de Google Forms. Nunca pedimos contraseñas ni datos bancarios
+        en este sitio.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Barra fija: aparece al alejarse del bloque de inscripción. -->
+<div class="barra" data-barra-cta hidden>
+  <div class="barra__info">
+    <strong>RNR Quito 2026</strong>
+    <span>{sitio.fechas}</span>
+  </div>
+  <a class="barra__boton" href={inscripcion.url} target="_blank" rel="noopener noreferrer">
+    Inscribirme
+  </a>
+</div>
+
+<style>
+  .cta {
+    position: relative;
+    background: var(--azul-900);
+    padding-block: clamp(40px, 6vw, 76px);
+    padding-inline: var(--gutter);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .cta__trama {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05) 0 10px,
+      rgba(255, 255, 255, 0) 10px 20px
+    );
+    z-index: -1;
+  }
+
+  .cta__cuerpo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .cta__cuerpo {
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+      gap: clamp(32px, 5vw, 60px);
+    }
+  }
+
+  .cta__kicker {
+    display: inline-block;
+    margin: 0 0 12px;
+    padding: 5px 12px;
+    background: var(--cyan);
+    color: var(--azul-900);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .cta__titulo {
+    margin: 0 0 12px;
+    font-size: clamp(26px, 6.4vw, 40px);
+    font-weight: 700;
+    line-height: 1.12;
+    color: var(--blanco);
+    text-wrap: balance;
+  }
+
+  .cta__bajada {
+    margin: 0 0 18px;
+    max-width: 52ch;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #e8edf2;
+  }
+
+  .cta__puntos {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 8px;
+  }
+
+  .cta__puntos li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: #d9e2ea;
+  }
+
+  .cta__puntos li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 12px;
+    height: 3px;
+    background: var(--cyan);
+  }
+
+  .cta__panel {
+    background: var(--blanco);
+    border-top: 5px solid var(--cyan);
+    padding: 24px 22px 26px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .cta__panel-titulo {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--azul-700);
+  }
+
+  .cta__panel-texto {
+    margin: 0 0 20px;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--tinta-2);
+  }
+
+  .cta__boton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    background: var(--azul-700);
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 17px 20px;
+    transition:
+      background var(--transicion),
+      transform var(--transicion),
+      box-shadow var(--transicion);
+    box-shadow: 0 0 0 0 rgba(0, 98, 155, 0.45);
+    animation: pulso 3s ease-in-out infinite;
+  }
+
+  .cta__boton:hover,
+  .cta__boton:focus-visible {
+    background: var(--azul-900);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    animation-play-state: paused;
+  }
+
+  .cta__flecha {
+    transition: transform var(--transicion);
+  }
+  .cta__boton:hover .cta__flecha {
+    transform: translateX(5px);
+  }
+
+  @keyframes pulso {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 98, 155, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 14px rgba(0, 98, 155, 0);
+    }
+  }
+
+  .cta__aviso {
+    margin: 14px 0 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--tinta-3);
+  }
+
+  /* --- barra fija --- */
+  .barra {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(0, 40, 85, 0.97);
+    border-top: 3px solid var(--cyan);
+    transform: translateY(110%);
+    transition: transform 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .barra[data-visible] {
+    transform: translateY(0);
+  }
+
+  .barra__info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+    color: var(--blanco);
+    min-width: 0;
+  }
+
+  .barra__info strong {
+    font-size: 14px;
+  }
+
+  .barra__info span {
+    font-size: 12px;
+    color: #b9cbdb;
+  }
+
+  .barra__boton {
+    flex: 0 0 auto;
+    background: var(--cyan);
+    color: var(--azul-900);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 12px 18px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .barra__boton:hover,
+  .barra__boton:focus-visible {
+    background: var(--blanco);
+    color: var(--azul-900);
+  }
+
+  @media (min-width: 900px) {
+    .barra {
+      inset-inline: auto 24px;
+      bottom: 24px;
+      border-top: none;
+      border-left: 4px solid var(--cyan);
+      padding: 12px 16px;
+      transform: translateY(150%);
+    }
+  }
+</style>
+
+<script>
+  import { iniciarBarraCta } from '../lib/barra-cta';
+  iniciarBarraCta();
+</script>

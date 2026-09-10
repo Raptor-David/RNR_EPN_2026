@@ -1,0 +1,147 @@
+---
+import '../styles/global.css';
+import { sitio, sedeInfo, inscripcion, contacto } from '../data/sitio';
+
+interface Props {
+  titulo?: string;
+  descripcion?: string;
+}
+
+const {
+  titulo = `${sitio.nombre} · Escuela Politécnica Nacional, Quito`,
+  descripcion = sitio.descripcion,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://rnr2026.vercel.app').href;
+
+/** Datos estructurados (Schema.org) para buscadores. */
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: sitio.nombre,
+  description: sitio.descripcion,
+  startDate: '2026-09-25T07:30:00-05:00',
+  endDate: '2026-09-27T12:30:00-05:00',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  inLanguage: 'es-EC',
+  location: {
+    '@type': 'Place',
+    name: sedeInfo.titulo,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Ladrón de Guevara E11-253',
+      addressLocality: 'Quito',
+      postalCode: '170525',
+      addressCountry: 'EC',
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: sedeInfo.lat, longitude: sedeInfo.lng },
+  },
+  organizer: {
+    '@type': 'Organization',
+    name: 'Rama Estudiantil IEEE EPN · IEEE Ecuador Section',
+    email: contacto.correo,
+    url: canonical,
+  },
+  offers: {
+    '@type': 'Offer',
+    url: inscripcion.url,
+    availability: 'https://schema.org/InStock',
+    priceCurrency: 'USD',
+  },
+};
+---
+
+<!doctype html>
+<html lang="es-EC">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#002855" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- Endurecimiento también a nivel de documento: si el sitio se sirve
+         fuera de Vercel (o sin vercel.json), estas reglas siguen aplicando. -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_EC" />
+    <meta property="og:site_name" content={sitio.nombreCorto} />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/img/rnr-quito-2026.jpg', canonical).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/img/logo-rnr-quito-2026.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <noscript>
+      <style>
+        [data-anim] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
+  </head>
+
+  <body>
+    <a class="saltar-al-contenido" href="#contenido">Saltar al contenido</a>
+
+    <!-- Indicador de progreso: reemplaza visualmente a la barra de scroll. -->
+    <div class="progreso" role="presentation" aria-hidden="true">
+      <span class="progreso__barra" data-progreso></span>
+    </div>
+
+    <slot />
+
+    <style>
+      .progreso {
+        position: fixed;
+        inset-block-start: 0;
+        inset-inline: 0;
+        height: 3px;
+        z-index: 90;
+        background: transparent;
+        pointer-events: none;
+      }
+
+      .progreso__barra {
+        display: block;
+        height: 100%;
+        width: 100%;
+        transform: scaleX(0);
+        transform-origin: 0 50%;
+        background: linear-gradient(90deg, var(--cyan), var(--azul-500));
+        transition: transform 90ms linear;
+      }
+    </style>
+
+    <script>
+      import { iniciarProgreso } from '../lib/progreso';
+      import { iniciarAnimacionesScroll } from '../lib/animaciones';
+      import { asegurarAnclaSegura } from '../lib/seguridad';
+
+      asegurarAnclaSegura();
+      iniciarProgreso();
+      iniciarAnimacionesScroll();
+    </script>
+  </body>
+</html>

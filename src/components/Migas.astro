@@ -1,0 +1,43 @@
+<nav class="migas" aria-label="Ruta de navegación">
+  <div class="contenedor migas__lista">
+    <a href="https://www.ieee.org" target="_blank" rel="noopener noreferrer">IEEE</a>
+    <span class="migas__sep" aria-hidden="true">/</span>
+    <span>Ecuador Section</span>
+    <span class="migas__sep" aria-hidden="true">/</span>
+    <span class="migas__actual" aria-current="page">RNR 2026</span>
+  </div>
+</nav>
+
+<style>
+  .migas {
+    background: var(--gris);
+    border-bottom: 1px solid var(--linea);
+    padding: 9px var(--gutter);
+  }
+
+  .migas__lista {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--tinta-3);
+  }
+
+  .migas__lista a {
+    color: var(--azul-700);
+    text-decoration: none;
+  }
+  .migas__lista a:hover {
+    text-decoration: underline;
+  }
+
+  .migas__sep {
+    padding: 0 8px;
+    color: #9aa0a5;
+  }
+
+  .migas__actual {
+    color: var(--tinta);
+    font-weight: 600;
+  }
+</style>

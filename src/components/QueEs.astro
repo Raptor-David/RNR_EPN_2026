@@ -1,0 +1,199 @@
+---
+import { sitio } from '../data/sitio';
+
+const cifras = [
+  { valor: 'XXII', etiqueta: 'Edición' },
+  { valor: '20+', etiqueta: 'Ramas participantes' },
+  { valor: '150', etiqueta: 'Asistentes esperados' },
+  { valor: '3', etiqueta: 'Días en Quito' },
+];
+---
+
+<section id="que-es" class="seccion">
+  <div class="contenedor reja">
+    <div>
+      <h2 class="titulo-seccion" data-anim>¿Qué es la RNR?</h2>
+      <div class="regla" data-anim></div>
+
+      <div class="texto" data-anim data-anim-delay="1">
+        <p>
+          La Reunión Nacional de Ramas llega en 2026 a su edición XXII, recibida este año por la
+          Rama Estudiantil de la Escuela Politécnica Nacional.
+        </p>
+        <p>
+          Este evento es el punto de encuentro por excelencia para los verdaderos motores del
+          desarrollo y la innovación tecnológica: estudiantes de ingeniería, líderes de directivas
+          de rama, miembros de capítulos técnicos y voluntarios de todos los rincones del país. Es
+          un espacio diseñado para inspirar, conectar y fortalecer el liderazgo en nuestra
+          comunidad.
+        </p>
+      </div>
+
+      <div class="cifras" data-anim data-anim-delay="2">
+        {
+          cifras.map((c) => (
+            <div class="cifra">
+              <p class="cifra__valor">{c.valor}</p>
+              <p class="cifra__etiqueta">{c.etiqueta}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <aside class="ficha" data-anim data-anim-delay="2">
+      <div class="ficha__cuerpo">
+        <h3 class="ficha__titulo">Datos del evento</h3>
+        <dl class="ficha__datos">
+          <div>
+            <dt>Fechas</dt>
+            <dd>{sitio.fechasLargas}</dd>
+          </div>
+          <div>
+            <dt>Sede</dt>
+            <dd>Escuela Politécnica Nacional, Quito</dd>
+          </div>
+          <div>
+            <dt>Organiza</dt>
+            <dd>{sitio.organiza}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="ficha__pie">
+        <img
+          src="/img/rnr-ibarra-2025.jpg"
+          alt="Afiche de la RNR Ibarra 2025, Campus El Olivo, Universidad Técnica del Norte"
+          loading="lazy"
+          decoding="async"
+        />
+        <p class="ficha__nota">
+          <a href="https://events.vtools.ieee.org/m/497568" target="_blank" rel="noopener noreferrer">
+            Edición anterior: RNR Ibarra 2025 · Universidad Técnica del Norte
+          </a>
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .reja {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .reja {
+      grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+      gap: clamp(28px, 4vw, 52px);
+    }
+  }
+
+  .texto {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--tinta);
+    max-width: 62ch;
+  }
+  .texto p {
+    margin: 0;
+  }
+
+  .cifras {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--linea);
+    border: 1px solid var(--linea);
+    margin-top: 30px;
+  }
+
+  @media (min-width: 640px) {
+    .cifras {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+  }
+
+  .cifra {
+    background: var(--blanco);
+    padding: 18px 16px;
+  }
+
+  .cifra__valor {
+    margin: 0;
+    font-size: clamp(28px, 7vw, 34px);
+    font-weight: 700;
+    color: var(--azul-700);
+    line-height: 1;
+  }
+
+  .cifra__etiqueta {
+    margin: 4px 0 0;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tinta-3);
+  }
+
+  .ficha {
+    border-top: 4px solid var(--azul-700);
+    background: var(--gris);
+  }
+
+  .ficha__cuerpo {
+    padding: 20px 22px 24px;
+  }
+
+  .ficha__titulo {
+    margin: 0 0 14px;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--azul-900);
+  }
+
+  .ficha__datos {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .ficha__datos dt {
+    font-weight: 700;
+    color: var(--tinta);
+  }
+
+  .ficha__datos dd {
+    margin: 2px 0 0;
+    color: var(--tinta-2);
+  }
+
+  .ficha__pie {
+    border-top: 1px solid var(--linea);
+    padding: 16px 22px 20px;
+  }
+
+  .ficha__pie img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--linea);
+  }
+
+  .ficha__nota {
+    margin: 8px 2px 0;
+    font-size: 12.5px;
+    color: var(--tinta-3);
+  }
+</style>

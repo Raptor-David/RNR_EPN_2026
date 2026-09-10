@@ -1,0 +1,221 @@
+---
+import { barraUtil, navegacion, sitio } from '../data/sitio';
+---
+
+<div class="util">
+  <div class="contenedor util__lista">
+    {
+      barraUtil.map((enlace, i) => (
+        <>
+          {i > 0 && <span class="util__sep" aria-hidden="true">|</span>}
+          <a href={enlace.url} rel="noopener noreferrer" target="_blank">
+            {enlace.italica ? (
+              <>IEEE <em>{enlace.italica}</em></>
+            ) : (
+              enlace.etiqueta
+            )}
+          </a>
+        </>
+      ))
+    }
+  </div>
+</div>
+
+<header id="inicio" class="cabecera">
+  <div class="cabecera__marca">
+    <div class="contenedor barra-marca">
+      <a href="#inicio" class="barra-marca__logo" aria-label={`${sitio.nombre} — inicio`}>
+        <img
+          src="/img/logo-sb-epn.png"
+          alt="IEEE Student Branch — Escuela Politécnica Nacional"
+          width="1400"
+          height="448"
+          decoding="async"
+        />
+      </a>
+      <div class="barra-marca__division" aria-hidden="true"></div>
+      <div class="barra-marca__textos">
+        <p class="barra-marca__titulo">{sitio.nombre}</p>
+        <p class="barra-marca__subtitulo">{sitio.organiza}</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Secciones del sitio">
+    <div class="contenedor nav__lista scroll-fino">
+      {
+        navegacion.map((item) => (
+          <a href={`#${item.id}`} class="nav__enlace">
+            {item.etiqueta}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+</header>
+
+<style>
+  /* --- barra utilitaria IEEE: se oculta en móvil, como en el diseño original --- */
+  .util {
+    display: none;
+    background: var(--azul-900);
+    padding-inline: var(--gutter);
+  }
+
+  .util__lista {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(12px, 2vw, 22px);
+    min-height: 34px;
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+  }
+
+  .util__lista a {
+    color: var(--blanco);
+    text-decoration: none;
+  }
+  .util__lista a:hover {
+    text-decoration: underline;
+  }
+  .util__sep {
+    color: rgba(255, 255, 255, 0.35);
+  }
+  .util em {
+    font-style: italic;
+  }
+
+  @media (min-width: 760px) {
+    .util {
+      display: block;
+    }
+  }
+
+  /* --- cabecera pegajosa --- */
+  .cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background: var(--blanco);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  }
+
+  .cabecera__marca {
+    padding-inline: var(--gutter);
+  }
+
+  .barra-marca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-block: 8px;
+  }
+
+  .barra-marca__logo {
+    flex: 0 0 auto;
+    display: block;
+    line-height: 0;
+  }
+
+  .barra-marca__logo img {
+    display: block;
+    width: auto;
+    height: 34px;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .barra-marca__division {
+    display: none;
+    width: 1px;
+    height: 44px;
+    background: var(--linea);
+  }
+
+  .barra-marca__textos {
+    min-width: 0;
+  }
+
+  .barra-marca__titulo {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--azul-700);
+  }
+
+  .barra-marca__subtitulo {
+    display: none;
+    margin: 2px 0 0;
+    font-size: 13px;
+    color: var(--tinta-3);
+    letter-spacing: 0.02em;
+  }
+
+  @media (min-width: 760px) {
+    .barra-marca {
+      flex-wrap: wrap;
+      gap: clamp(16px, 3vw, 32px);
+      padding-block: 14px;
+    }
+    .barra-marca__logo img {
+      height: 76px;
+    }
+    .barra-marca__division {
+      display: block;
+    }
+    .barra-marca__titulo {
+      font-size: clamp(17px, 2.2vw, 21px);
+      line-height: 1.2;
+    }
+    .barra-marca__subtitulo {
+      display: block;
+    }
+  }
+
+  /* --- navegación --- */
+  .nav {
+    background: var(--azul-700);
+    padding-inline: var(--gutter);
+  }
+
+  .nav__lista {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+  }
+
+  .nav__enlace {
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 15px 14px;
+    white-space: nowrap;
+    scroll-snap-align: start;
+    transition: background var(--transicion);
+  }
+
+  .nav__enlace:hover,
+  .nav__enlace:focus-visible {
+    background: var(--azul-900);
+    color: var(--blanco);
+  }
+
+  @media (min-width: 760px) {
+    .nav__lista {
+      flex-wrap: wrap;
+      overflow-x: visible;
+    }
+    .nav__enlace {
+      padding: 13px clamp(12px, 1.6vw, 20px);
+    }
+  }
+</style>

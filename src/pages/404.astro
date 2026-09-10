@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import Encabezado from '../components/Encabezado.astro';
+import PieDePagina from '../components/PieDePagina.astro';
+---
+
+<Base titulo="Página no encontrada · RNR Quito 2026" descripcion="La página solicitada no existe.">
+  <Encabezado />
+  <main id="contenido" class="error">
+    <div class="contenedor error__cuerpo">
+      <p class="error__codigo">404</p>
+      <h1 class="error__titulo">Esta página no existe</h1>
+      <p class="error__texto">
+        El enlace que seguiste no corresponde a ninguna sección del sitio de la RNR 2026.
+      </p>
+      <a class="error__boton" href="/">Volver al inicio</a>
+    </div>
+  </main>
+  <PieDePagina />
+</Base>
+
+<style>
+  .error {
+    padding: clamp(48px, 10vw, 110px) var(--gutter);
+  }
+
+  .error__codigo {
+    margin: 0;
+    font-size: clamp(48px, 14vw, 90px);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--azul-700);
+  }
+
+  .error__titulo {
+    margin: 8px 0 12px;
+    font-size: clamp(24px, 5vw, 34px);
+    font-weight: 700;
+    color: var(--azul-900);
+  }
+
+  .error__texto {
+    margin: 0 0 26px;
+    max-width: 52ch;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--tinta-2);
+  }
+
+  .error__boton {
+    display: inline-flex;
+    align-items: center;
+    background: var(--azul-700);
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 15px 24px;
+  }
+
+  .error__boton:hover {
+    background: var(--azul-900);
+    color: var(--blanco);
+  }
+</style>

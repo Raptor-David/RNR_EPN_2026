@@ -1,0 +1,87 @@
+---
+const marcas = [
+  {
+    src: '/img/logo-ieee-seccion-ecuador.png',
+    alt: 'IEEE Sección Ecuador',
+    url: 'https://www.ieee.org.ec',
+  },
+  {
+    src: '/img/logo-sb-epn.png',
+    alt: 'IEEE Student Branch — Escuela Politécnica Nacional',
+    url: 'https://www.epn.edu.ec',
+  },
+  {
+    src: '/img/logo-ieee-students-ecuador.jpg',
+    alt: 'IEEE Students — Ecuador Section',
+    url: null,
+  },
+];
+---
+
+<section id="auspiciantes" class="seccion seccion--gris">
+  <div class="contenedor">
+    <h2 class="titulo-seccion" data-anim>Organizan y auspician</h2>
+    <div class="regla" data-anim></div>
+
+    <div class="rejilla">
+      {
+        marcas.map((m, i) => (
+          <div class="celda" data-anim data-anim-delay={String(Math.min(i + 1, 4))}>
+            {m.url ? (
+              <a href={m.url} target="_blank" rel="noopener noreferrer">
+                <img src={m.src} alt={m.alt} loading="lazy" decoding="async" />
+              </a>
+            ) : (
+              <img src={m.src} alt={m.alt} loading="lazy" decoding="async" />
+            )}
+          </div>
+        ))
+      }
+      <div class="celda celda--vacia" data-anim data-anim-delay="4">
+        <span>Espacio disponible para auspiciantes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .rejilla {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  @media (min-width: 700px) {
+    .rejilla {
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: clamp(14px, 2vw, 22px);
+    }
+  }
+
+  .celda {
+    background: var(--blanco);
+    border: 1px solid var(--linea);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .celda img {
+    display: block;
+    max-width: 100%;
+    max-height: 70px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .celda--vacia span {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: #7a7f85;
+    line-height: 1.4;
+  }
+</style>

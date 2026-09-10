@@ -1,0 +1,208 @@
+---
+import { sitio, inscripcion } from '../data/sitio';
+---
+
+<section class="hero">
+  <div class="hero__trama" aria-hidden="true"></div>
+  <div class="hero__velo" aria-hidden="true"></div>
+
+  <div class="hero__cuerpo">
+    <div class="contenedor">
+      <p class="hero__kicker" data-anim="una-vez">Región 9 · IEEE Ecuador Section</p>
+
+      <h1 class="hero__titulo" data-anim="una-vez" data-anim-delay="1">
+        Reunión Nacional de Ramas 2026
+      </h1>
+
+      <div class="hero__ficha" data-anim="una-vez" data-anim-delay="2">
+        <p class="hero__fechas">{sitio.fechas}</p>
+        <p class="hero__sede">{sitio.sede}</p>
+      </div>
+
+      <p class="hero__bajada" data-anim="una-vez" data-anim-delay="3">
+        Tres días de encuentro para las ramas estudiantiles IEEE del Ecuador: charlas técnicas,
+        talleres, competencias y la noche cultural en el centro histórico.
+      </p>
+
+      <div class="hero__acciones" data-anim="una-vez" data-anim-delay="4">
+        <a class="btn btn--principal" href={inscripcion.url} target="_blank" rel="noopener noreferrer">
+          Inscríbete ahora
+          <span class="btn__flecha" aria-hidden="true">→</span>
+        </a>
+        <a class="btn btn--fantasma" href="#programa">Ver el programa</a>
+        <a class="btn btn--fantasma" href="#sede">Sede y cómo llegar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    background: var(--azul-900);
+    isolation: isolate;
+  }
+
+  .hero__trama {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(135deg, #0b3b6b 0 10px, #0e4477 10px 20px);
+  }
+
+  .hero__velo {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 40, 85, 0.94) 0%,
+      rgba(0, 40, 85, 0.86) 60%,
+      rgba(0, 40, 85, 0.72) 100%
+    );
+  }
+
+  @media (min-width: 760px) {
+    .hero__velo {
+      background: linear-gradient(
+        90deg,
+        rgba(0, 40, 85, 0.94) 0%,
+        rgba(0, 40, 85, 0.82) 55%,
+        rgba(0, 40, 85, 0.55) 100%
+      );
+    }
+  }
+
+  .hero__cuerpo {
+    position: relative;
+    padding-block: clamp(40px, 6vw, 84px);
+    padding-inline: var(--gutter);
+  }
+
+  .hero__kicker {
+    margin: 0 0 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blanco);
+  }
+
+  .hero__titulo {
+    margin: 0 0 18px;
+    font-size: clamp(30px, 8vw, 56px);
+    font-weight: 700;
+    line-height: 1.08;
+    color: var(--blanco);
+    max-width: 22ch;
+    text-wrap: balance;
+  }
+
+  .hero__ficha {
+    background: var(--blanco);
+    border-left: 6px solid var(--cyan);
+    padding: 12px 18px;
+    margin: 0 0 24px;
+    display: inline-block;
+  }
+
+  .hero__fechas {
+    margin: 0;
+    font-size: clamp(17px, 4.4vw, 24px);
+    font-weight: 700;
+    color: var(--azul-900);
+    line-height: 1.2;
+  }
+
+  .hero__sede {
+    margin: 2px 0 0;
+    font-size: 15px;
+    color: var(--tinta-2);
+  }
+
+  .hero__bajada {
+    margin: 0 0 28px;
+    max-width: 56ch;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #e8edf2;
+  }
+
+  .hero__acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  @media (min-width: 560px) {
+    .hero__acciones {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  }
+
+  /* --- botones --- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 15px 24px;
+    text-align: center;
+    transition:
+      background var(--transicion),
+      color var(--transicion),
+      transform var(--transicion),
+      box-shadow var(--transicion);
+  }
+
+  .btn--principal {
+    background: var(--cyan);
+    color: var(--azul-900);
+    box-shadow: 0 0 0 0 rgba(0, 181, 226, 0.55);
+    animation: latido 3.2s ease-in-out infinite;
+  }
+
+  .btn--principal:hover,
+  .btn--principal:focus-visible {
+    background: var(--blanco);
+    color: var(--azul-900);
+    transform: translateY(-2px);
+    animation-play-state: paused;
+  }
+
+  .btn__flecha {
+    transition: transform var(--transicion);
+  }
+  .btn--principal:hover .btn__flecha {
+    transform: translateX(4px);
+  }
+
+  .btn--fantasma {
+    border: 2px solid var(--blanco);
+    color: var(--blanco);
+    font-weight: 600;
+    padding: 13px 22px;
+  }
+
+  .btn--fantasma:hover,
+  .btn--fantasma:focus-visible {
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--blanco);
+  }
+
+  @keyframes latido {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 181, 226, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 0 12px rgba(0, 181, 226, 0);
+    }
+  }
+</style>

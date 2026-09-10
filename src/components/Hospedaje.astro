@@ -1,0 +1,212 @@
+---
+const cuotas = [
+  {
+    titulo: 'Miembros estudiantiles',
+    lineas: [
+      { monto: '$125,00', nota: 'incluye hospedaje' },
+      { monto: '$90,00', nota: 'sin hospedaje' },
+    ],
+  },
+  {
+    titulo: 'Miembros profesionales',
+    lineas: [
+      { monto: '$150,00', nota: 'incluye hospedaje' },
+      { monto: '$120,00', nota: 'sin hospedaje' },
+    ],
+  },
+];
+---
+
+<section id="hospedaje" class="seccion">
+  <div class="contenedor">
+    <h2 class="titulo-seccion" data-anim>Hospedaje</h2>
+    <div class="regla" data-anim></div>
+
+    <div class="rejilla">
+      <div class="bloque" data-anim data-anim-delay="1">
+        <p class="bloque__titulo">Hotel 6 de Diciembre</p>
+        <p class="bloque__texto">
+          El hospedaje será en el Hotel 6 de Diciembre. Dos noches con desayuno incluido.
+        </p>
+      </div>
+
+      <div class="bloque" data-anim data-anim-delay="2">
+        <p class="bloque__titulo">Check-in y salida</p>
+        <dl class="datos">
+          <div>
+            <dt>Check-in</dt>
+            <dd>Viernes 25 de septiembre</dd>
+          </div>
+          <div>
+            <dt>Salida</dt>
+            <dd>Domingo 27 de septiembre</dd>
+          </div>
+          <div>
+            <dt>Parqueo</dt>
+            <dd>Capacidad para buses universitarios y vehículos particulares</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="bloque" data-anim data-anim-delay="3">
+        <p class="bloque__titulo">Qué llevar</p>
+        <ul class="lista">
+          <li>Crema de sol</li>
+          <li>Abrigo para la noche</li>
+          <li>Botella de agua: mantenerse siempre hidratado</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cuotas" data-anim data-anim-delay="2">
+      <div class="cuotas__cabecera">
+        <p>Cuotas de participación</p>
+      </div>
+      <div class="cuotas__rejilla">
+        {
+          cuotas.map((c) => (
+            <div class="cuota">
+              <p class="cuota__titulo">{c.titulo}</p>
+              {c.lineas.map((l) => (
+                <p class="cuota__linea">
+                  {l.monto} <span>({l.nota})</span>
+                </p>
+              ))}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .rejilla {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  @media (min-width: 620px) {
+    .rejilla {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: clamp(18px, 2.4vw, 28px);
+    }
+  }
+
+  .bloque {
+    border-top: 4px solid var(--azul-700);
+    background: var(--gris);
+    padding: 18px 20px 22px;
+  }
+
+  .bloque__titulo {
+    margin: 0 0 8px;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--azul-900);
+  }
+
+  .bloque__texto {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--tinta-2);
+  }
+
+  .datos {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--tinta-2);
+  }
+
+  .datos > div {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  @media (min-width: 420px) {
+    .datos > div {
+      grid-template-columns: 84px 1fr;
+      gap: 10px;
+    }
+  }
+
+  .datos dt {
+    font-weight: 700;
+    color: var(--azul-700);
+  }
+  .datos dd {
+    margin: 0;
+  }
+
+  .lista {
+    margin: 0;
+    padding-left: 18px;
+    display: grid;
+    gap: 6px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--tinta-2);
+  }
+
+  .cuotas {
+    margin-top: clamp(28px, 3.6vw, 44px);
+    border: 1px solid var(--linea);
+  }
+
+  .cuotas__cabecera {
+    background: var(--azul-900);
+    padding: 12px 20px;
+  }
+
+  .cuotas__cabecera p {
+    margin: 0;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blanco);
+  }
+
+  .cuotas__rejilla {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--linea);
+  }
+
+  @media (min-width: 560px) {
+    .cuotas__rejilla {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+  }
+
+  .cuota {
+    background: var(--blanco);
+    padding: 20px 22px 24px;
+  }
+
+  .cuota__titulo {
+    margin: 0 0 12px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--azul-700);
+  }
+
+  .cuota__linea {
+    margin: 0 0 4px;
+    font-size: 17px;
+    color: var(--tinta);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cuota__linea span {
+    font-size: 14px;
+    color: var(--tinta-3);
+  }
+</style>

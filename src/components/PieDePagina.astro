@@ -1,0 +1,154 @@
+---
+import { contacto, redes, enlacesIeee, sitio } from '../data/sitio';
+const anio = new Date().getFullYear();
+---
+
+<footer id="contacto" class="pie">
+  <div class="pie__cuerpo">
+    <div class="contenedor pie__rejilla">
+      <div data-anim>
+        <img
+          class="pie__logo"
+          src="/img/logo-rnr-quito-2026.png"
+          alt="RNR Quito 2026"
+          loading="lazy"
+          decoding="async"
+        />
+        <p class="pie__texto">
+          {sitio.nombre} · {sitio.fechas} · Escuela Politécnica Nacional, Quito, Ecuador.
+        </p>
+      </div>
+
+      <div data-anim data-anim-delay="1">
+        <h3 class="pie__titulo">Contacto</h3>
+        <div class="pie__lista">
+          <a href={`mailto:${contacto.correo}`}>{contacto.correo}</a>
+          <a href={`tel:${contacto.telefonoHref}`}>{contacto.telefono}</a>
+          <span>Comité organizador · Rama Estudiantil IEEE EPN</span>
+        </div>
+      </div>
+
+      <div data-anim data-anim-delay="2">
+        <h3 class="pie__titulo">Redes</h3>
+        <div class="pie__lista">
+          {
+            redes.map((r) => (
+              <a href={r.url} target="_blank" rel="noopener noreferrer">
+                {r.etiqueta}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div data-anim data-anim-delay="3">
+        <h3 class="pie__titulo">Enlaces IEEE</h3>
+        <div class="pie__lista">
+          {
+            enlacesIeee.map((e) => (
+              <a href={e.url} target="_blank" rel="noopener noreferrer">
+                {e.etiqueta}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pie__legal">
+    <div class="contenedor pie__legal-fila">
+      <span>© {anio} IEEE — Todos los derechos reservados.</span>
+      <span>Sitio administrado por la Rama Estudiantil IEEE EPN · IEEE Ecuador Section</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .pie {
+    background: var(--azul-900);
+  }
+
+  .pie__cuerpo {
+    padding: clamp(36px, 5vw, 64px) var(--gutter) 32px;
+  }
+
+  .pie__rejilla {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  @media (min-width: 620px) {
+    .pie__rejilla {
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: clamp(26px, 4vw, 52px);
+    }
+  }
+
+  .pie__logo {
+    display: block;
+    width: auto;
+    height: 68px;
+    object-fit: contain;
+    margin-bottom: 16px;
+  }
+
+  .pie__texto {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: #d9e2ea;
+    max-width: 34ch;
+  }
+
+  .pie__titulo {
+    margin: 0 0 14px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blanco);
+  }
+
+  .pie__lista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 15px;
+    color: #d9e2ea;
+  }
+
+  .pie__lista a {
+    color: var(--blanco);
+    text-decoration: none;
+    width: fit-content;
+  }
+
+  .pie__lista a:hover,
+  .pie__lista a:focus-visible {
+    color: var(--cyan);
+    text-decoration: underline;
+  }
+
+  .pie__legal {
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    padding: 16px var(--gutter);
+  }
+
+  /* Espacio para que la barra fija de inscripcion no tape el aviso legal. */
+  @media (max-width: 899px) {
+    .pie__legal {
+      padding-bottom: 84px;
+    }
+  }
+
+  .pie__legal-fila {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    justify-content: space-between;
+    font-size: 12.5px;
+    color: #c3d2de;
+  }
+</style>

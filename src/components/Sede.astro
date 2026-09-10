@@ -1,0 +1,201 @@
+---
+import { sedeInfo } from '../data/sitio';
+---
+
+<section id="sede" class="seccion seccion--gris">
+  <div class="contenedor reja">
+    <div>
+      <h2 class="titulo-seccion" data-anim>Sede</h2>
+      <div class="regla" data-anim></div>
+
+      <p class="sede__nombre" data-anim data-anim-delay="1">{sedeInfo.titulo}</p>
+      <p class="sede__texto" data-anim data-anim-delay="1">
+        {sedeInfo.direccion}. El desarrollo del evento será en el edificio número 26 del campus.
+        Las actividades se concentran en el campus; la noche cultural es en el centro histórico.
+      </p>
+
+      <div class="notas" data-anim data-anim-delay="2">
+        <div class="nota">
+          <p class="nota__titulo">Edificio 26</p>
+          <p class="nota__texto">
+            Todas las sesiones del evento se desarrollan en el edificio número 26, señalado en el
+            mapa del campus.
+          </p>
+        </div>
+        <div class="nota">
+          <p class="nota__titulo">Ingreso con código QR</p>
+          <p class="nota__texto">
+            El ingreso a la universidad se implementará mediante códigos QR. Cada participante
+            recibe su QR personal y debe presentarlo en el acceso al campus.
+          </p>
+        </div>
+      </div>
+
+      <a
+        class="btn-mapa"
+        href={sedeInfo.mapaComoLlegar}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-anim
+        data-anim-delay="3"
+      >
+        Cómo llegar en Google Maps
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div class="columna-mapas">
+      <figure class="marco" data-anim data-anim-delay="1">
+        <div class="mapa">
+          <iframe
+            src={sedeInfo.mapaEmbed}
+            title="Mapa de Google con la ubicación de la Escuela Politécnica Nacional, Quito"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+            allowfullscreen></iframe>
+        </div>
+        <figcaption>{sedeInfo.campus} · {sedeInfo.direccion}</figcaption>
+      </figure>
+
+      <figure class="marco" data-anim data-anim-delay="2">
+        <img
+          src="/img/mapa-campus-epn.jpg"
+          alt="Mapa del Campus Politécnico José Rubén Orellana R. con la ubicación del edificio 26"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Plano del campus · el edificio 26 concentra todas las sesiones.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reja {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .reja {
+      grid-template-columns: repeat(2, minmax(300px, 1fr));
+      gap: clamp(28px, 4vw, 52px);
+    }
+  }
+
+  .sede__nombre {
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--azul-900);
+  }
+
+  .sede__texto {
+    margin: 0 0 26px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--tinta);
+    max-width: 52ch;
+  }
+
+  .notas {
+    display: grid;
+    gap: 1px;
+    background: var(--linea);
+    border: 1px solid var(--linea);
+  }
+
+  .nota {
+    background: var(--blanco);
+    padding: 16px 20px;
+  }
+
+  .nota__titulo {
+    margin: 0 0 4px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--azul-700);
+  }
+
+  .nota__texto {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--tinta-2);
+  }
+
+  .btn-mapa {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    background: var(--azul-700);
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 14px 22px;
+    transition: background var(--transicion);
+  }
+
+  .btn-mapa:hover,
+  .btn-mapa:focus-visible {
+    background: var(--azul-900);
+    color: var(--blanco);
+  }
+
+  .columna-mapas {
+    display: grid;
+    gap: 18px;
+  }
+
+  .marco {
+    margin: 0;
+    border: 1px solid var(--linea);
+    background: var(--blanco);
+    padding: 10px;
+  }
+
+  .mapa {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: var(--gris-2);
+  }
+
+  @media (min-width: 900px) {
+    .mapa {
+      aspect-ratio: 16 / 11;
+    }
+  }
+
+  .mapa iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  .marco img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--azul-900);
+  }
+
+  .marco figcaption {
+    margin: 10px 4px 4px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--tinta-3);
+  }
+</style>

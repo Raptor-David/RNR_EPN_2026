@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 130px; }
+  body { margin: 0; overflow-x: hidden; background: #ffffff; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #00629b; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: #002855; }
+  :focus-visible { outline: 3px solid #00629b; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  @media (max-width: 760px) {
+    html { scroll-padding-top: 112px; }
+    [data-m="util"] { display: none !important; }
+    [data-m="brandbar"] { flex-wrap: nowrap !important; gap: 10px !important; padding: 8px 0 !important; }
+    [data-m="brand"] { height: 34px !important; }
+    [data-m="title"] { font-size: 14px !important; line-height: 1.25 !important; }
+    [data-m="subtitle"] { display: none !important; }
+    [data-m="divider"] { display: none !important; }
+    [data-m="nav"] { flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    [data-m="nav"]::-webkit-scrollbar { display: none; }
+    [data-m="nav"] a { white-space: nowrap; padding: 15px 14px !important; }
+    [data-m="row"] { grid-template-columns: 1fr !important; gap: 3px !important; }
+    [data-m="row"] > span:first-child { font-size: 13px !important; }
+    [data-m="split"] { grid-template-columns: 1fr !important; }
+  }
+</style>
+</helmet>
+
+<div style="font-family:'Source Sans 3', Arial, Helvetica, sans-serif; color:#2c2c2c; background:#ffffff">
+
+  <div style="background:#002855; padding:0 clamp(16px,4vw,48px)">
+    <div data-m="util" style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:clamp(12px,2vw,22px); min-height:34px; font-size:12.5px; letter-spacing:0.02em">
+      <a href="https://www.ieee.org" style="color:#ffffff; text-decoration:none">IEEE.org</a>
+      <span style="color:rgba(255,255,255,0.35)">|</span>
+      <a href="https://ieeexplore.ieee.org" style="color:#ffffff; text-decoration:none">IEEE <em style="font-style:italic">Xplore</em></a>
+      <span style="color:rgba(255,255,255,0.35)">|</span>
+      <a href="https://standards.ieee.org" style="color:#ffffff; text-decoration:none">IEEE SA</a>
+      <span style="color:rgba(255,255,255,0.35)">|</span>
+      <a href="https://spectrum.ieee.org" style="color:#ffffff; text-decoration:none">IEEE Spectrum</a>
+      <span style="color:rgba(255,255,255,0.35)">|</span>
+      <a href="https://www.ieee.org/sitemap.html" style="color:#ffffff; text-decoration:none">Más sitios</a>
+    </div>
+  </div>
+
+  <header id="inicio" style="position:sticky; top:0; z-index:60; background:#ffffff; box-shadow:0 2px 6px rgba(0,0,0,0.12)">
+    <div style="padding:0 clamp(16px,4vw,48px)">
+      <div data-m="brandbar" style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:clamp(16px,3vw,32px); padding:14px 0">
+        <img src="./image122-7-mtsf7bh4-e4w0.png" alt="IEEE Student Branch — Escuela Politécnica Nacional" data-m="brand" style="display:block; width:auto; max-width:100%; height:76px; object-fit:contain; object-position:left center; flex:0 0 auto">
+        <div data-m="divider" style="width:1px; height:44px; background:#dcdfe2"></div>
+        <div data-m="titles" style="min-width:0">
+          <p data-m="title" style="margin:0; font-size:clamp(17px,2.2vw,21px); font-weight:700; color:#00629b; line-height:1.2">Reunión Nacional de Ramas Estudiantiles 2026</p>
+          <p data-m="subtitle" style="margin:2px 0 0; font-size:13px; color:#5b6165; letter-spacing:0.02em">IEEE Ecuador Section · Rama Estudiantil EPN</p>
+        </div>
+      </div>
+    </div>
+    <nav style="background:#00629b; padding:0 clamp(16px,4vw,48px)">
+      <div data-m="nav" style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; gap:0">
+        <a href="#que-es" style="color:#ffffff; text-decoration:none; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:13px clamp(12px,1.6vw,20px)" style-hover="background:#002855">Qué es</a>
+        <a href="#programa" style="color:#ffffff; text-decoration:none; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:13px clamp(12px,1.6vw,20px)" style-hover="background:#002855">Programa</a>
+        <a href="#ponentes" style="color:#ffffff; text-decoration:none; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:13px clamp(12px,1.6vw,20px)" style-hover="background:#002855">Ponentes</a>
+        <a href="#sede" style="color:#ffffff; text-decoration:none; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:13px clamp(12px,1.6vw,20px)" style-hover="background:#002855">Sede</a>
+        <a href="#hospedaje" style="color:#ffffff; text-decoration:none; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:13px clamp(12px,1.6vw,20px)" style-hover="background:#002855">Hospedaje</a>
+        <a href="#auspiciantes" style="color:#ffffff; text-decoration:none; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:13px clamp(12px,1.6vw,20px)" style-hover="background:#002855">Auspiciantes</a><a href="#contacto" style="color:#ffffff; text-decoration:none; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:13px clamp(12px,1.6vw,20px)" style-hover="background:#002855">Contacto</a>
+        
+      </div>
+    </nav>
+  </header>
+
+  <section style="position:relative; background:#002855">
+    <div style="position:absolute; inset:0; background-image:repeating-linear-gradient(135deg,#0b3b6b 0 10px,#0e4477 10px 20px)"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(0,40,85,0.94) 0%, rgba(0,40,85,0.82) 55%, rgba(0,40,85,0.55) 100%)"></div>
+    <div style="position:relative; padding:clamp(44px,6vw,84px) clamp(16px,4vw,48px)">
+      
+    <div style="max-width:1200px; margin:0 auto">
+        <p style="margin:0 0 14px; font-size:13px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:#ffffff">Región 9 · IEEE Ecuador Section</p>
+        <h1 style="margin:0 0 18px; font-size:clamp(32px,5.4vw,56px); font-weight:700; line-height:1.08; color:#ffffff; max-width:22ch; text-wrap:balance">Reunión Nacional de Ramas 2026</h1>
+        <div style="display:flex; flex-wrap:wrap; gap:0; margin:0 0 24px">
+          <div style="background:#ffffff; padding:12px 22px; border-left:6px solid #00b5e2">
+            <p style="margin:0; font-size:clamp(18px,2.4vw,24px); font-weight:700; color:#002855; line-height:1.2">25 – 27 de septiembre de 2026</p>
+            <p style="margin:2px 0 0; font-size:15px; color:#4a5054">Escuela Politécnica Nacional · Quito, Ecuador</p>
+          </div>
+        </div>
+        <p style="margin:0 0 30px; max-width:56ch; font-size:18px; font-weight:300; line-height:1.6; color:#e8edf2">Tres días de encuentro para las ramas estudiantiles IEEE del Ecuador: charlas técnicas, talleres, competencias y la noche cultural en el centro histórico.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:12px">
+          <a href="#programa" style="background:#ffffff; color:#00629b; text-decoration:none; font-size:14px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:15px 28px" style-hover="background:#e8edf2">Ver el programa</a>
+          <a href="#sede" style="border:2px solid #ffffff; color:#ffffff; text-decoration:none; font-size:14px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:13px 26px" style-hover="background:rgba(255,255,255,0.14)">Sede y cómo llegar</a>
+        </div>
+      </div></div>
+  </section>
+
+  <div style="background:#f6f7f8; border-bottom:1px solid #dcdfe2; padding:9px clamp(16px,4vw,48px)">
+    <div style="max-width:1200px; margin:0 auto; font-size:13px; color:#5b6165">
+      <a href="https://www.ieee.org" style="color:#00629b; text-decoration:none">IEEE</a>
+      <span style="padding:0 8px; color:#9aa0a5">/</span>
+      <span>Ecuador Section</span>
+      <span style="padding:0 8px; color:#9aa0a5">/</span>
+      <span style="color:#2c2c2c; font-weight:600">RNR 2026</span>
+    </div>
+  </div>
+
+  <section id="que-es" style="padding:clamp(44px,6vw,76px) clamp(16px,4vw,48px)">
+    <div data-m="split" style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:{{ colsQueEs }}; gap:clamp(28px,4vw,52px); align-items:start">
+      <div>
+        <h2 style="margin:0 0 6px; font-size:clamp(24px,3.2vw,34px); font-weight:700; color:#00629b; line-height:1.15">¿Qué es la RNR?</h2>
+        <div style="height:3px; background:#00629b; width:72px; margin-bottom:22px"></div>
+        <div style="display:flex; flex-direction:column; gap:16px; font-size:17px; line-height:1.7; color:#2c2c2c; max-width:62ch">
+          <p style="margin:0">La Reunión Nacional de Ramas llega en 2026 a su edición 22, recibida este año por la Rama Estudiantil de la Escuela Politécnica Nacional.</p>
+          <p style="margin:0">Este evento es el punto de encuentro por excelencia para los verdaderos motores del desarrollo y la innovación tecnológica: estudiantes de ingeniería, líderes de directivas de rama, miembros de capítulos técnicos y voluntarios de todos los rincones del país. Se trata de un espacio diseñado para inspirar, conectar y fortalecer el liderazgo en nuestra comunidad. <br>Con este espíritu, la Reunión Nacional de Ramas llega en 2026 a su edición XXII , recibida este año por la Rama Estudiantil de la Escuela Politécnica Nacional.</p>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:#dcdfe2; border:1px solid #dcdfe2; margin-top:30px">
+          <div style="background:#ffffff; padding:20px 22px">
+            <p style="margin:0; font-size:34px; font-weight:700; color:#00629b; line-height:1">XXII</p>
+            <p style="margin:4px 0 0; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#5b6165">Edición</p>
+          </div>
+          <div style="background:#ffffff; padding:20px 22px">
+            <p style="margin:0; font-size:34px; font-weight:700; color:#00629b; line-height:1">[00]</p>
+            <p style="margin:4px 0 0; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#5b6165">Ramas participantes</p>
+          </div>
+          <div style="background:#ffffff; padding:20px 22px">
+            <p style="margin:0; font-size:34px; font-weight:700; color:#00629b; line-height:1">150</p>
+            <p style="margin:4px 0 0; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#5b6165">Asistentes esperados</p>
+          </div>
+          <div style="background:#ffffff; padding:20px 22px">
+            <p style="margin:0; font-size:34px; font-weight:700; color:#00629b; line-height:1">3</p>
+            <p style="margin:4px 0 0; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#5b6165">Días en Quito</p>
+          </div>
+        </div>
+      </div>
+
+      <aside style="border-top:4px solid #00629b; background:#f6f7f8">
+        <div style="padding:20px 22px 24px">
+          <h3 style="margin:0 0 14px; font-size:17px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#002855">Datos del evento</h3>
+          <div style="display: flex; flex-direction: column; gap: 14px; font-size: 15px; line-height: 1.55; width: 283px; height: 153px">
+            <div>
+              <p style="margin:0; font-weight:700; color:#2c2c2c">Fechas</p>
+              <p style="margin:2px 0 0; color:#4a5054">25, 26 y 27 de septiembre de 2026</p>
+            </div>
+            <div>
+              <p style="margin:0; font-weight:700; color:#2c2c2c">Sede</p>
+              <p style="margin:2px 0 0; color:#4a5054">Escuela Politécnica Nacional, Quito</p>
+            </div>
+            <div>
+              <p style="margin:0; font-weight:700; color:#2c2c2c">Organiza</p>
+              <p style="margin:2px 0 0; color:#4a5054">Rama Estudiantil EPN · IEEE Ecuador Section</p>
+            </div>
+            <div>
+              
+              
+            </div>
+            <div>
+              
+              
+            </div>
+          </div>
+        </div>
+        <div style="border-top:1px solid #dcdfe2; padding:16px 22px 20px">
+          <img src="fotos/rnr-ibarra-2025.jpg" alt="Afiche de la RNR Ibarra 2025, Campus El Olivo, Universidad Técnica del Norte" style="display:block; width:100%; height:auto; border:1px solid #dcdfe2">
+          <p style="margin:8px 2px 0; font-size:12.5px; color:#5b6165"><a href="https://events.vtools.ieee.org/m/497568">Edición anterior: RNR Ibarra 2025 · Universidad Técnica del Norte.</a></p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="programa" style="background:#f6f7f8; border-top:1px solid #dcdfe2; padding:clamp(44px,6vw,76px) clamp(16px,4vw,48px)">
+    <div style="max-width:1200px; margin:0 auto">
+      
+      <h2 style="margin:0 0 6px; font-size:clamp(24px,3.2vw,34px); font-weight:700; color:#00629b; line-height:1.15">Programa</h2>
+      <div style="height:3px; background:#00629b; width:72px; margin-bottom:12px"></div><p style="margin:0 0 clamp(24px,3vw,36px); font-size:16px; color:#5b6165">Programa preliminar. Los horarios pueden ajustarse; la versión definitiva se entrega en la acreditación.</p><div style="position:relative">
+      <sc-if value="{{ programaBlur }}">
+        <div style="position:absolute; inset:0; z-index:3; background:rgba(246,247,248,0.5); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); display:flex; align-items:center; justify-content:center; padding:24px">
+          <div style="background:#ffffff; border-top:4px solid #00629b; box-shadow:0 6px 24px rgba(0,40,85,0.18); padding:22px 26px 24px; max-width:420px; text-align:center">
+            <p style="margin:0 0 6px; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#00629b">Programa preliminar</p>
+            <p style="margin:0; font-size:16px; line-height:1.55; color:#2c2c2c">El detalle de horarios se publicará próximamente.</p>
+          </div>
+        </div>
+      </sc-if>
+      <div style="display:grid; grid-template-columns:{{ programaColumnas }}; gap:clamp(18px,2.4vw,28px)">
+
+        <article style="background:#ffffff; border:1px solid #dcdfe2">
+          <div style="background:#00629b; padding:14px 20px">
+            <p style="margin:0; font-size:20px; font-weight:700; color:#ffffff; line-height:1.15">Día 1</p>
+            <p style="margin:2px 0 0; font-size:13px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#cfe2ef">Viernes 25 de septiembre</p>
+          </div><div style="padding: 6px 20px 20px; position: relative">
+            <p style="margin:16px 0 10px; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#002855; border-bottom:2px solid #dcdfe2; padding-bottom:8px">Llegada y apertura</p>
+            
+            <div data-m="row" style="display:grid; grid-template-columns:104px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid #eceef0">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">7H30 – 8H00</span><p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Traslado al<br>Campus Politécnico <br>José Rubén<br>Orellana R.</p>
+              
+            </div>
+            <div data-m="row" style="display:grid; grid-template-columns:104px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid #eceef0">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">8H00 – 9H00</span>
+              <p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Registro y entrega de kits.</p>
+            </div>
+            <p style="margin: 18px 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #000000; border-bottom: 2px solid #dcdfe2; padding-bottom: 8px; text-decoration-line: underline">REUNIÓN NACIONAL DE RAMAS</p>
+            <div style="display: grid; grid-template-columns: 104px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #eceef0; background-color: #FFF4E0">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">9H00 – 11H00</span>
+              <div>
+                <p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Inauguración de la&nbsp;<br>Reunión Nacional de Ramas</p>
+                <p style="margin:2px 0 0; font-size:14px; font-style:italic; color:#5b6165">Conduce: Andrey Carrillo</p>
+              </div>
+            </div>
+            <div style="border-left:3px solid #dcdfe2; margin:2px 0 10px 6px; padding-left:12px">
+              <div data-m="row" style="display:grid; grid-template-columns:80px 1fr; gap:10px; padding:8px 0; border-bottom:1px solid #f2f4f5">
+                <span style="font-size:13px; font-weight:600; color:#00629b; font-variant-numeric:tabular-nums">9H00 – 9H10</span>
+                <div>
+                  <p style="margin:0; font-size:15px; color:#2c2c2c; line-height:1.35">Palabras de bienvenida — Escuela Politécnica Nacional</p>
+                  <p style="margin:1px 0 0; font-size:13px; font-style:italic; color:#5b6165">Dra. Valentina Ramos Ramos · Vicerrectora de Docencia</p>
+                </div>
+              </div>
+              <div data-m="row" style="display:grid; grid-template-columns:80px 1fr; gap:10px; padding:8px 0; border-bottom:1px solid #f2f4f5">
+                <span style="font-size:13px; font-weight:600; color:#00629b; font-variant-numeric:tabular-nums">9H10 – 9H20</span>
+                <div>
+                  <p style="margin:0; font-size:15px; color:#2c2c2c; line-height:1.35">Palabras de bienvenida — IEEE Ecuador Section</p>
+                  <p style="margin:1px 0 0; font-size:13px; font-style:italic; color:#5b6165">Dr. Julio Barzola-Monteses ·&nbsp;<br>Presidente Sección Ecuador</p>
+                </div>
+              </div>
+              <div data-m="row" style="display:grid; grid-template-columns:80px 1fr; gap:10px; padding:8px 0; border-bottom:1px solid #f2f4f5">
+                <span style="font-size:13px; font-weight:600; color:#00629b; font-variant-numeric:tabular-nums">9H20 – 9H30</span>
+                <div>
+                  <p style="margin:0; font-size:15px; color:#2c2c2c; line-height:1.35">Palabras de bienvenida — Rama Estudiantil EPN</p>
+                  <p style="margin:1px 0 0; font-size:13px; font-style:italic; color:#5b6165">Dr. Fabián Pérez ·&nbsp;<br>Consejero de la<br>Rama Estudiantil EPN</p>
+                </div>
+              </div>
+              <div data-m="row" style="display:grid; grid-template-columns:80px 1fr; gap:10px; padding:8px 0; border-bottom:1px solid #f2f4f5">
+                <span style="font-size:13px; font-weight:600; color:#00629b; font-variant-numeric:tabular-nums">9H30 – 9H45</span>
+                <div>
+                  <p style="margin:0; font-size:15px; color:#2c2c2c; line-height:1.35">Mensaje Inaugural —&nbsp;<br>Rama Estudiantil EPN</p>
+                  <p style="margin: 1px 0 0; font-size: 13px; font-style: italic; color: #5b6165; position: relative">&nbsp;Elias Viteri ·&nbsp;<br>Presidente de la<br>Rama Estudiantil EPN</p>
+                </div>
+              </div>
+              <div data-m="row" style="display:grid; grid-template-columns:80px 1fr; gap:10px; padding:8px 0">
+                <span style="font-size:13px; font-weight:600; color:#00629b; font-variant-numeric:tabular-nums">9H45 – 10H00</span>
+                <div>
+                  <p style="margin:0; font-size:15px; color:#2c2c2c; line-height:1.35">PMI—&nbsp;Firma</p>
+                  <p style="margin:1px 0 0; font-size:13px; font-style:italic; color:#5b6165">PIM - IEEE ·&nbsp;Firma. IEEE Section Ecuador</p>
+                </div>
+              </div><div data-m="row" style="display:grid; grid-template-columns:80px 1fr; gap:10px; padding:8px 0; border-bottom:1px solid #f2f4f5">
+                
+                <span style="font-size:13px; font-weight:600; color:#00629b; font-variant-numeric:tabular-nums">10H00 – 11H00<br></span><div>
+                  <p style="margin:0; font-size:15px; color:#2c2c2c; line-height:1.35">Intervención Musical</p>
+                  <p style="margin: 1px 0 0; font-size: 13px; font-style: italic; color: #5b6165; position: relative">Coro Politécnico<br></p>
+                </div>
+              </div>
+            </div><div data-m="row" style="display:grid; grid-template-columns:104px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid #eceef0">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">11H00 –&nbsp;12H00</span>
+              <div>
+                <p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Como hacer tu CV</p>
+                <p style="margin:2px 0 0; font-size:14px; color:#5b6165"><span style="font-size: 13px; font-style: italic;"><span style="font-size: 14px; background-color: rgba(255, 244, 224, 0);">Conduce: Fortiner&nbsp;</span></span><br style="font-size: 13px; font-style: italic;"><span style="font-size: 13px; font-style: italic;"></span></p>
+              </div>
+            </div>
+            
+            
+            <div style="display: grid; grid-template-columns: 104px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #eceef0; position: relative">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">12H30 – 12H45</span>
+              <div style="display:grid; gap:8px">
+                <div style="border-left:3px solid #00b5e2; padding-left:10px">
+                  
+                  <p style="margin:1px 0 0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Traslado al Almuerzo<br><span style="color: rgb(91, 97, 101); font-size: 14px; font-style: italic; font-weight: 400;">El protocolo de flujo y conteo consiste en que los voluntarios se organicen formando pasillos humanos para guiar de manera ordenada a los asistentes desde las salidas del teatro hasta el Policomedor, aplicando un sistema de desalojo escalonado por secciones para evitar aglomeraciones, mientras que el personal designado se encarga de registrar de forma precisa el número total de personas que transcurren durante el traslado.</span></p>
+                </div>
+                <div style="border-left:3px solid #00b5e2; padding-left:10px">
+                  
+                  
+                </div>
+              </div>
+            </div>
+            <div style="background:#eef1f3; padding:9px 14px; margin:12px 0">
+              <p style="margin:0; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#4a5054">12H45 – 14H30 · ALMUERZO</p>
+            </div><div style="background:#eef1f3; padding:9px 14px; margin:12px 0">
+              <p style="margin:0; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#4a5054">14H30 – 15H00 · TRASLADO - CEC</p>
+            </div>
+            <div style="display: grid; grid-template-columns: 104px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #eceef0; background-color: #FFFFFF8C">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">15H00 – 16H00</span>
+              <div>
+                <p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Charla Técnica</p>
+                <p style="margin:2px 0 0; font-size:14px; font-style:italic; color:#5b6165">Andrea Jurado Narvaez · <br>Co-Founder at InitGrammers</p>
+              </div>
+            </div><div style="background:#eef1f3; padding:9px 14px; margin:12px 0">
+              
+            <p style="margin:0; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#4a5054">16H00 – 16H30 · COFFEE BREAK</p></div><div style="display: grid; grid-template-columns: 104px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #eceef0; background-color: #FFFFFF8C">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">16H30 – 17H00</span>
+              <div>
+                <p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Feria de Ramas</p>
+                <p style="margin:2px 0 0; font-size:14px; font-style:italic; color:#5b6165">IEEE Student Ecuador Section</p>
+              </div>
+            </div>
+            
+            
+            <div style="border-left: 6px solid #b8580a; margin: 12px 0; padding: 12px 16px 14px; background-color: #FFF4E0">
+              <div data-m="row" style="display:grid; grid-template-columns:104px 1fr; gap:12px">
+                <span style="font-size: 14px; font-weight: 700; color: #6E3100; font-variant-numeric: tabular-nums; white-space: nowrap">17H00 – 17H30</span>
+                <div>
+                  <p style="margin:0; font-size:16px; font-weight:700; color:#7a3a06; line-height:1.3">Sesión de foto oficial</p>
+                  <p style="margin: 2px 0 0; font-size: 14px; color: #8f4408; position: relative">CEC-<br>Centro Educación Continua.</p>
+                </div>
+              </div>
+              <div style="margin:10px 0 0; padding-left:6px">
+                <div data-m="row" style="display:grid; grid-template-columns:80px 1fr; gap:10px; padding:8px 0; border-bottom:1px solid #e9cfa8">
+                  <span style="font-size:13px; font-weight:700; color:#8f4408; white-space:nowrap">Foto 1</span>
+                  <div>
+                    <p style="margin:0; font-size:15px; font-weight:600; color:#7a3a06; line-height:1.35">Sin banderas estudiantiles</p>
+                    <p style="margin:1px 0 0; font-size:13px; font-style:italic; color:#8f4408">Fotografía general de todas las delegaciones</p>
+                  </div>
+                </div>
+                <div data-m="row" style="display:grid; grid-template-columns:80px 1fr; gap:10px; padding:8px 0">
+                  <span style="font-size:13px; font-weight:700; color:#8f4408; white-space:nowrap">Foto 2</span>
+                  <div>
+                    <p style="margin:0; font-size:15px; font-weight:600; color:#7a3a06; line-height:1.35">Con banderas estudiantiles</p>
+                    <p style="margin:1px 0 0; font-size:13px; font-style:italic; color:#8f4408">Cada rama con la bandera de su respectiva rama</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p style="margin:6px 0 10px; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#002855; border-bottom:2px solid #dcdfe2; padding-bottom:8px">Noche -&nbsp;<span style="letter-spacing: 1.04px; background-color: rgb(246, 247, 248);">City tour</span></p>
+            <div data-m="row" style="display:grid; grid-template-columns:104px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid #eceef0">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">18H30 – 22H00</span>
+              <p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Con destino al Centro Histórico</p>
+            </div>
+            
+            
+            <div data-m="row" style="display:grid; grid-template-columns:104px 1fr; gap:12px; padding:12px 0 0">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">22H00 – 23H00</span>
+              <p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Retorno al hotel</p>
+            </div>
+          </div>
+          
+        </article>
+
+        <article style="background:#ffffff; border:1px solid #dcdfe2">
+          <div style="background:#00629b; padding:14px 20px">
+            <p style="margin:0; font-size:20px; font-weight:700; color:#ffffff; line-height:1.15">Día 2</p>
+            <p style="margin:2px 0 0; font-size:13px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#cfe2ef">Sábado 26 de septiembre</p>
+          </div>
+          <div style="padding:6px 20px 20px">
+            <p style="margin:14px 0 10px; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#002855; border-bottom:2px solid #dcdfe2; padding-bottom:8px">Mañana</p>
+            <div data-m="row" style="display:grid; grid-template-columns:104px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid #eceef0">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">7H00 – 8H30<br></span>
+              <p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Desayuno</p>
+            </div>
+            <div data-m="row" style="display:grid; grid-template-columns:104px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid #eceef0">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">8H30&nbsp;– 9H00</span>
+              <p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Traslado al<br>Campus Politécnico<br>José Rubén<br>Orellana R.</p>
+            </div>
+            <div data-m="row" style="display:grid; grid-template-columns:104px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid #eceef0">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">9H00 – 9H30</span>
+              <div>
+                <p style="margin: 0; font-size: 16px; font-weight: 600; color: #2c2c2c; line-height: 1.3; font-style: normal">Industria 5.0</p>
+                <p style="margin:2px 0 0; font-size:14px; color:#5b6165">Ing. Edgar Pineda - CEC</p>
+              </div>
+            </div><div data-m="row" style="display:grid; grid-template-columns:104px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid #eceef0">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">9H30 – 11H00</span>
+              <div>
+                <p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Bootcamp -Provosional-</p>
+                <p style="margin:2px 0 0; font-size:14px; color:#5b6165">Fortinet</p>
+              </div>
+            </div>
+            
+            <div style="background:#eef1f3; padding:9px 14px; margin:12px 0">
+              <p style="margin:0; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#4a5054">11H15 – 11H30 · Break</p>
+            </div>
+            <div data-m="row" style="display:grid; grid-template-columns:104px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid #eceef0">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">11H30 – 12H30</span>
+              <div>
+                <p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Charla</p>
+                <p style="margin:2px 0 0; font-size:14px; color:#5b6165">MSc Alcibar Yanez<br>Dr. Julio Barzola<br>Tesorero · IEEE Ecuador Section</p>
+              </div>
+            </div>
+            <div data-m="row" style="display:grid; grid-template-columns:104px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid #eceef0">
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">12H30 – 13H00</span>
+              <div>
+                
+                <p style="margin: 0; font-size: 16px; font-weight: 600; color: #2c2c2c; line-height: 1.3; position: relative">Charla Premios</p><p></p><p style="margin:2px 0 0; font-size:14px; color:#5b6165">Ing. Marco Vinueza<br>Pasado Vicepresidente Rama EPN</p>
+              </div>
+            </div>
+            
+            <div style="background:#eef1f3; padding:9px 14px; margin:12px 0">
+              <p style="margin:0; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#4a5054">13H00 – 14H30 · ALMUERZO</p>
+            </div><div style="background:#eef1f3; padding:9px 14px; margin:12px 0">
+              <p style="margin:0; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#4a5054">14H30 – 15H00 ·&nbsp;<span style="letter-spacing: 1.04px;">TRASLADO - CEC</span></p>
+            </div>
+            <p style="margin:6px 0 10px; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#002855; border-bottom:2px solid #dcdfe2; padding-bottom:8px">Tarde</p>
+            <div data-m="row" style="display:grid; grid-template-columns:104px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid #eceef0">
+              
+              <span style="font-size:14px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums; white-space:nowrap">15H00 – 17H00</span><div>
+                <p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Feria de cuidades</p>
+                <p style="margin:2px 0 0; font-size:14px; color:#5b6165"><span style="font-style: italic; background-color: rgba(255, 255, 255, 0.55);">IEEE Student Ecuador Section</span></p>
+              </div>
+            </div><div style="background:#eef1f3; padding:9px 14px; margin:12px 0">
+              <p style="margin:0; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#4a5054">17H00 – 17H30 ·&nbsp;<span style="letter-spacing: 1.04px;"><br>TRASLADO HOTEL 6 DE DICIEMBRE</span></p>
+            </div>
+            
+            
+            
+            
+            <div style="border-left:6px solid #00b5e2; background:#f6f7f8; padding:10px 14px; margin-top:12px">
+              <p style="margin:0; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#002855">19H00 – 23H00 · CENA DE GALA</p><div style="background:#eef1f3; padding:9px 14px; margin:12px 0">
+              <p style="margin:0; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#4a5054">Hotel Quito<span style="letter-spacing: 1.04px;"></span></p>
+            </div>
+            </div>
+          </div>
+        </article>
+
+        <article style="background:#ffffff; border:1px solid #dcdfe2">
+          <div style="background:#00629b; padding:14px 20px">
+            <p style="margin:0; font-size:20px; font-weight:700; color:#ffffff; line-height:1.15">Día 3</p>
+            <p style="margin:2px 0 0; font-size:13px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#cfe2ef">Domingo 27 de septiembre</p>
+          </div>
+          <div style="padding:6px 20px 20px">
+            <p style="margin:16px 0 10px; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#002855; border-bottom:2px solid #dcdfe2; padding-bottom:8px">Cierre y ciudad · modera [Nombre]</p>
+            <div data-m="row" style="display:grid; grid-template-columns:62px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid #eceef0">
+              <span style="font-size:15px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums">7H00 - 8H30</span>
+              <div>
+                <p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Desayuno</p><p style="margin:2px 0 0; font-size:14px; color:#5b6165">Hotel 6 de diciembre</p>
+                
+              </div>
+            </div>
+            
+            <div data-m="row" style="display:grid; grid-template-columns:62px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid #eceef0">
+              <span style="font-size:15px; font-weight:700; color:#00629b; font-variant-numeric:tabular-nums">12:30</span>
+              <div>
+                <p style="margin:0; font-size:16px; font-weight:600; color:#2c2c2c; line-height:1.3">Check Out</p>
+                <p style="margin:2px 0 0; font-size:14px; color:#5b6165">Hotel 6 de diciembre</p>
+              </div>
+            </div>
+            <div style="background:#eef1f3; padding:9px 14px; margin:12px 0">
+              <p style="margin:0; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#4a5054">12:30 · CIERRE FINAL</p>
+            </div>
+            
+          </div>
+        </article>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ponentes" style="padding:clamp(44px,6vw,76px) clamp(16px,4vw,48px)">
+    <div style="max-width:1200px; margin:0 auto">
+      <h2 style="margin:0 0 6px; font-size:clamp(24px,3.2vw,34px); font-weight:700; color:#00629b; line-height:1.15">Charlas y ponentes</h2>
+      <div style="height:3px; background:#00629b; width:72px; margin-bottom:clamp(24px,3vw,36px)"></div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:clamp(18px,2.4vw,28px)">
+        <article style="border:1px solid #dcdfe2; background:#ffffff; display:flex; flex-direction:column">
+          <img src="fotos/valentina-ramos.jpg" alt="Dra. Valentina Ramos Ramos, Vicerrectora de Docencia de la Escuela Politécnica Nacional" style="display:block; width:100%; aspect-ratio:4 / 3; object-fit:cover; object-position:center 22%; border-bottom:1px solid #dcdfe2">
+          <div style="padding:18px 20px 22px">
+            <p style="margin:0; font-size:19px; font-weight:700; color:#002855; line-height:1.25">Dra. Valentina Ramos Ramos</p>
+            <p style="margin:3px 0 12px; font-size:14px; color:#5b6165; line-height:1.45">Vicerrectora de Docencia · Escuela Politécnica Nacional</p>
+            <p style="margin:0; padding-top:12px; border-top:1px solid #eceef0; font-size:16px; font-weight:600; color:#00629b; line-height:1.4">Palabras de bienvenida — Inauguración de la Reunión Nacional de Ramas</p>
+          </div>
+        </article>
+        <article style="border:1px solid #dcdfe2; background:#ffffff; display:flex; flex-direction:column">
+          <img src="fotos/julio-barzola.jpg" alt="Dr. Julio Barzola-Monteses, Presidente de IEEE Ecuador Section" style="display:block; width:100%; aspect-ratio:4 / 3; object-fit:cover; object-position:center 30%; border-bottom:1px solid #dcdfe2">
+          <div style="padding:18px 20px 22px">
+            <p style="margin:0; font-size:19px; font-weight:700; color:#002855; line-height:1.25">Dr. Julio Barzola-Monteses</p>
+            <p style="margin:3px 0 12px; font-size:14px; color:#5b6165; line-height:1.45">Presidente · IEEE Ecuador Section</p>
+            <p style="margin:0; padding-top:12px; border-top:1px solid #eceef0; font-size:16px; font-weight:600; color:#00629b; line-height:1.4">Palabras de bienvenida — IEEE Ecuador Section</p>
+          </div>
+        </article>
+        <article style="border:1px solid #dcdfe2; background:#ffffff; display:flex; flex-direction:column">
+          <img src="fotos/fabian-perez.jpg" alt="Dr. Fabián Pérez, Consejero de la Rama Estudiantil IEEE EPN" style="display:block; width:100%; aspect-ratio:4 / 3; object-fit:cover; object-position:center 28%; border-bottom:1px solid #dcdfe2">
+          <div style="padding:18px 20px 22px">
+            <p style="margin:0; font-size:19px; font-weight:700; color:#002855; line-height:1.25">Dr. Fabián Pérez</p>
+            <p style="margin:3px 0 12px; font-size:14px; color:#5b6165; line-height:1.45">Consejero · Rama Estudiantil EPN</p>
+            <p style="margin:0; padding-top:12px; border-top:1px solid #eceef0; font-size:16px; font-weight:600; color:#00629b; line-height:1.4">Palabras de bienvenida — Rama Estudiantil EPN</p>
+          </div>
+        </article>
+        <article style="border:1px solid #dcdfe2; background:#ffffff; display:flex; flex-direction:column">
+          <img src="fotos/alcibar-yanez.jpg" alt="Ing. Alcibar Yánez" style="display:block; width:100%; aspect-ratio:4 / 3; object-fit:cover; object-position:center 25%; border-bottom:1px solid #dcdfe2">
+          <div style="padding:18px 20px 22px">
+            <p style="margin:0; font-size:19px; font-weight:700; color:#002855; line-height:1.25">MSc. Alcibar Yánez</p>
+            <p style="margin:3px 0 12px; font-size:14px; color:#5b6165; line-height:1.45">Tesorero · IEEE Ecuador Section</p>
+            <p style="margin:0; padding-top:12px; border-top:1px solid #eceef0; font-size:16px; font-weight:600; color:#00629b; line-height:1.4">Charla tesorería</p>
+          </div>
+        </article>
+        <sc-for list="{{ ponentes }}" as="p" hint-placeholder-count="1">
+          
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="sede" style="background:#f6f7f8; border-top:1px solid #dcdfe2; padding:clamp(44px,6vw,76px) clamp(16px,4vw,48px)">
+    <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(28px,4vw,52px); align-items:start">
+      <div>
+        
+        <h2 style="margin:0 0 6px; font-size:clamp(24px,3.2vw,34px); font-weight:700; color:#00629b; line-height:1.15">Sede</h2><div style="height:3px; background:#00629b; width:72px; margin-bottom:22px"></div>
+        <p style="margin:0 0 8px; font-size:20px; font-weight:700; color:#002855">Escuela Politécnica Nacional</p>
+        <p style="margin: 0 0 26px; font-size: 17px; line-height: 1.7; color: #2c2c2c; max-width: 52ch; font-style: normal">Ladrón de Guevara E11-253, Quito. El desarrollo del evento será en el edificio número 26 del campus. Las actividades se concentran en el campus; la noche cultural es en el centro histórico. Ubicar gps aqui</p>
+        <div style="display:grid; gap:1px; background:#dcdfe2; border:1px solid #dcdfe2">
+          <div style="background:#ffffff; padding:16px 20px">
+            <p style="margin:0 0 4px; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#00629b">Edificio 26</p>
+            <p style="margin:0; font-size:15px; line-height:1.6; color:#4a5054">Todas las sesiones del evento se desarrollan en el edificio número 26, señalado en el mapa del campus.</p>
+          </div>
+          <div style="background:#ffffff; padding:16px 20px">
+            <p style="margin:0 0 4px; font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#00629b">Ingreso con código QR</p>
+            <p style="margin:0; font-size:15px; line-height:1.6; color:#4a5054">El ingreso a la universidad se implementará mediante códigos QR. Cada participante recibe su QR personal y debe presentarlo en el acceso al campus.</p>
+          </div>
+          
+          
+          
+        </div>
+      </div>
+      <div style="border:1px solid #dcdfe2; background:#ffffff; padding:10px">
+        <img src="fotos/mapa-campus-epn.png" alt="Mapa del Campus Politécnico José Rubén Orellana R., Escuela Politécnica Nacional" style="display:block; width:100%; height:auto; background:#002855">
+        <p style="margin:10px 4px 4px; font-size:13px; color:#5b6165">Campus Politécnico José Rubén Orellana R. · Ladrón de Guevara E11-253, Quito 170525, Ecuador.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="hospedaje" style="padding:clamp(44px,6vw,76px) clamp(16px,4vw,48px)">
+    <div style="max-width:1200px; margin:0 auto">
+      <h2 style="margin:0 0 6px; font-size:clamp(24px,3.2vw,34px); font-weight:700; color:#00629b; line-height:1.15">Hospedaje</h2>
+      <div style="height:3px; background:#00629b; width:72px; margin-bottom:clamp(24px,3vw,34px)"></div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:clamp(18px,2.4vw,28px)">
+        <div style="border-top:4px solid #00629b; background:#f6f7f8; padding:18px 20px 22px">
+          <p style="margin:0 0 8px; font-size:19px; font-weight:700; color:#002855">Hotel 6 de Diciembre</p>
+          <p style="margin:0; font-size:15px; line-height:1.65; color:#4a5054">El hospedaje será en el Hotel 6 de Diciembre. Dos noches con desayuno incluido.</p>
+        </div>
+        <div style="border-top:4px solid #00629b; background:#f6f7f8; padding:18px 20px 22px">
+          <p style="margin:0 0 8px; font-size:19px; font-weight:700; color:#002855">Check-in y salida</p>
+          <div style="display:grid; gap:8px; font-size:15px; line-height:1.5; color:#4a5054">
+            <div data-m="row" style="display:grid; grid-template-columns:80px 1fr; gap:10px">
+              <span style="font-weight:700; color:#00629b">Check-in</span>
+              <span>Viernes 25 de septiembre</span>
+            </div>
+            <div data-m="row" style="display:grid; grid-template-columns:80px 1fr; gap:10px">
+              <span style="font-weight:700; color:#00629b">Salida</span>
+              <span>Domingo 27 de septiembre</span>
+            </div>
+            <div data-m="row" style="display:grid; grid-template-columns:80px 1fr; gap:10px">
+              <span style="font-weight:700; color:#00629b">Parqueo</span>
+              <span>Capacidad de parqueaderos para buses universitarios y para vehículos de los interesados en viajar</span>
+            </div>
+          </div>
+        </div>
+        <div style="border-top:4px solid #00629b; background:#f6f7f8; padding:18px 20px 22px">
+          <p style="margin:0 0 8px; font-size:19px; font-weight:700; color:#002855">Qué llevar</p>
+          <ul style="margin:0; padding-left:18px; display:grid; gap:6px; font-size:15px; line-height:1.55; color:#4a5054">
+            <li>Crema de sol</li>
+            <li>Abrigo para la noche</li>
+            <li>Botella de agua: mantenerse siempre hidratado</li>
+          </ul>
+        </div>
+      </div>
+
+      <sc-if value="{{ mostrarCuotas }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:clamp(28px,3.6vw,44px); border:1px solid #dcdfe2">
+          <div style="background:#002855; padding:12px 20px">
+            <p style="margin:0; font-size:14px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#ffffff">Cuotas de participación</p>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:#dcdfe2">
+            <div style="background:#ffffff; padding:20px 22px 24px">
+              <p style="margin:0 0 12px; font-size:18px; font-weight:700; color:#00629b">Miembros estudiantiles</p>
+              <p style="margin:0; font-size:17px; color:#2c2c2c; font-variant-numeric:tabular-nums">$125,00 <span style="font-size:14px; color:#5b6165">(incluye hospedaje)</span></p>
+              <p style="margin:4px 0 0; font-size:17px; color:#2c2c2c; font-variant-numeric:tabular-nums">$90,00 <span style="font-size:14px; color:#5b6165">(sin hospedaje)</span></p>
+            </div>
+            <div style="background:#ffffff; padding:20px 22px 24px">
+              <p style="margin:0 0 12px; font-size:18px; font-weight:700; color:#00629b">Miembros profesionales</p>
+              <p style="margin:0; font-size:17px; color:#2c2c2c; font-variant-numeric:tabular-nums">$150,00 <span style="font-size:14px; color:#5b6165">(incluye hospedaje)</span></p>
+              <p style="margin:4px 0 0; font-size:17px; color:#2c2c2c; font-variant-numeric:tabular-nums">$120,00 <span style="font-size:14px; color:#5b6165">(sin hospedaje)</span></p>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section id="auspiciantes" style="background:#f6f7f8; border-top:1px solid #dcdfe2; padding:clamp(40px,5vw,68px) clamp(16px,4vw,48px)">
+    <div style="max-width:1200px; margin:0 auto">
+      <h2 style="margin:0 0 6px; font-size:clamp(22px,2.8vw,30px); font-weight:700; color:#00629b; line-height:1.15">Organizan y auspician</h2>
+      <div style="height:3px; background:#00629b; width:72px; margin-bottom:clamp(22px,3vw,32px)"></div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:clamp(14px,2vw,22px)">
+        <div style="background:#ffffff; border:1px solid #dcdfe2; height:100px; display:flex; align-items:center; justify-content:center; padding:12px; text-align:center">
+          <img src="fotos/ieee-seccion-ecuador.png" alt="IEEE Sección Ecuador" style="display:block; max-width:100%; max-height:76px; width:auto; height:auto; object-fit:contain">
+        </div>
+        <div style="background:#ffffff; border:1px solid #dcdfe2; height:100px; display:flex; align-items:center; justify-content:center; padding:12px; text-align:center">
+          <img src="./image1-4-mtsem27k-uva1.png" alt="IEEE Student Branch — Escuela Politécnica Nacional" style="display: block; max-width: 100%; max-height: 76px; width: 3700px; height: auto; object-fit: contain; aspect-ratio: 3700 / 1185" width="3700" height="1185">
+        </div>
+        <div style="background:#ffffff; border:1px solid #dcdfe2; height:100px; display:flex; align-items:center; justify-content:center; padding:12px; text-align:center">
+          <img src="fotos/ieee-students-ecuador.jpg" alt="IEEE Students — Ecuador Section" style="display:block; max-width:100%; max-height:76px; width:auto; height:auto; object-fit:contain">
+        </div>
+        <div style="background:#ffffff; border:1px solid #dcdfe2; height:100px; display:flex; align-items:center; justify-content:center; padding:12px; text-align:center">
+          <span style="font-size:11px; letter-spacing:0.06em; color:#7a7f85">[auspiciante]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contacto" style="background:#002855">
+    <div style="padding:clamp(40px,5vw,64px) clamp(16px,4vw,48px) 32px">
+      <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:clamp(26px,4vw,52px)">
+        <div>
+          <img src="fotos/rnr-quito-2026.png" alt="RNR Quito 2026" style="display:block; width:auto; height:76px; object-fit:contain; margin-bottom:16px">
+          <p style="margin:0; font-size:15px; line-height:1.65; color:#d9e2ea; max-width:34ch">Reunión Nacional de Ramas 2026 · 25 al 27 de septiembre · Escuela Politécnica Nacional, Quito, Ecuador.</p>
+        </div>
+        <div>
+          <h3 style="margin:0 0 14px; font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#ffffff">Contacto</h3>
+          <div style="display:flex; flex-direction:column; gap:8px; font-size:15px; color:#d9e2ea">
+            <a href="mailto:[correo]" style="color:#ffffff; text-decoration:none">rama.ieee@epn.edu.ec</a>
+            <span>+593 96 787 2169</span>
+            <span>[nombre del contacto · comité organizador]</span>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin:0 0 14px; font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#ffffff">Redes</h3>
+          <div style="display:flex; flex-direction:column; gap:8px; font-size:15px">
+            <a href="https://instagram.com/ieee_ecuador" style="color:#ffffff; text-decoration:none">Instagram · @ieee_ecuador</a>
+            <a href="https://instagram.com/sb.ieee.epn" style="color:#ffffff; text-decoration:none">Instagram · @sb.ieee.epn</a>
+            <a href="https://instagram.com/ieee_students_ec" style="color:#ffffff; text-decoration:none">Instagram · @ieee_students_ec</a>
+            
+            
+          </div>
+        </div>
+        <div>
+          <h3 style="margin:0 0 14px; font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#ffffff">Enlaces IEEE</h3>
+          <div style="display:flex; flex-direction:column; gap:8px; font-size:15px">
+            <a href="https://www.ieee.org" style="color:#ffffff; text-decoration:none">IEEE.org</a>
+            <a href="https://students.ieee.org" style="color:#ffffff; text-decoration:none">IEEE Student Branches</a>
+            <a href="https://www.ieee.org/membership/join" style="color:#ffffff; text-decoration:none">Hazte miembro IEEE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.22); padding:16px clamp(16px,4vw,48px)">
+      <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; gap:10px 18px; justify-content:space-between; font-size:12.5px; color:#c3d2de">
+        <span>© 2026 IEEE — Todos los derechos reservados.</span>
+        <span>Sitio administrado por la Rama Estudiantil IEEE EPN · IEEE Ecuador Section</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;programaLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;columnas&quot;,&quot;apilado&quot;],&quot;default&quot;:&quot;columnas&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Programa&quot;},&quot;programaBlur&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Programa&quot;},&quot;mostrarFicha&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Qué es&quot;},&quot;mostrarCuotas&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hospedaje&quot;},&quot;cantidadPonentes&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;min&quot;:0,&quot;max&quot;:6,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Ponentes&quot;,&quot;unit&quot;:&quot;tarjetas vacías&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const apilado = (this.props.programaLayout ?? 'columnas') === 'apilado';
+    const n = this.props.cantidadPonentes ?? 0;
+    const base = Array.from({ length: 6 }, () => ({
+      nombre: '[Nombre del ponente]',
+      cargo: '[Cargo] · [Institución]',
+      charla: '[Título de la charla]'
+    }));
+    return {
+      colsQueEs: (this.props.mostrarFicha ?? true) ? 'minmax(0,2fr) minmax(260px,1fr)' : 'minmax(0,1fr)',
+      programaColumnas: apilado ? '1fr' : 'repeat(auto-fit,minmax(280px,1fr))',
+      programaBlur: this.props.programaBlur ?? true,
+      mostrarCuotas: this.props.mostrarCuotas ?? true,
+      ponentes: base.slice(0, Math.max(1, Math.min(6, n)))
+    };
+  }
+}
+</script>
+</body>
+</html>
