@@ -86,7 +86,7 @@ export const programa: Dia[] = [
         tipo: 'sesion',
         hora: '11H00 – 12H00',
         titulo: 'Cómo hacer tu CV',
-        detalle: 'Conduce: Fortinet',
+        detalle: 'Conduce: SGF GLOBAL',
       },
       {
         tipo: 'sesion',
