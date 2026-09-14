@@ -213,7 +213,6 @@ export const programa: Dia[] = [
         tipo: 'sesion',
         hora: '19H00 – 23H00',
         titulo: 'Cena de gala',
-        detalle: 'Hotel Quito',
         acento: 'cyan',
       },
     ],
