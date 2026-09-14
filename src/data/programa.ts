@@ -200,14 +200,14 @@ export const programa: Dia[] = [
       { tipo: 'pausa', texto: '13H00 – 14H15 · Almuerzo' },
       { tipo: 'pausa', texto: '14H15 – 14H30 · Traslado - CEC' },
       { tipo: 'titulo', texto: 'Tarde' },
+      { tipo: 'sesion', hora: 'Reservado', titulo: 'Reservado', detalle: 'Reservado' },
+      { tipo: 'sesion', hora: 'Reservado', titulo: 'Reservado', detalle: 'Reservado' },
       {
         tipo: 'sesion',
         hora: '15H00 – 16H30',
         titulo: 'Feria de ciudades',
         detalle: 'IEEE Student Ecuador Section',
       },
-      { tipo: 'sesion', hora: 'Reservado', titulo: 'Reservado', detalle: 'Reservado' },
-      { tipo: 'sesion', hora: 'Reservado', titulo: 'Reservado', detalle: 'Reservado' },
       { tipo: 'pausa', texto: '17H00 – 17H30 · Traslado Hotel 6 de Diciembre' },
       {
         tipo: 'sesion',
