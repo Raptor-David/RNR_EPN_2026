@@ -158,8 +158,8 @@ export const programa: Dia[] = [
       {
         tipo: 'sesion',
         hora: '9H00 – 9H30',
-        titulo: 'Industria 5.0 IEEE',
-        detalle: 'Ing. Edgar Pineda · CEC',
+        titulo: 'Los líderes que transforman organizaciones',
+        detalle: 'Edgar Alvarez · Project Manager',
       },
       {
         tipo: 'sesion',

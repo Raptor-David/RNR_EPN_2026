@@ -41,4 +41,20 @@ export const ponentes: Ponente[] = [
     encuadre: 'center 25%',
     alt: 'MSc. Alcibar Yánez, Tesorero de IEEE Ecuador Section',
   },
+  {
+    nombre: 'Andrea Jurado Narváez',
+    cargo: 'Co-Founder · InitGrammers',
+    charla: 'Charla técnica',
+    foto: '/img/ponentes/andrea-jurado.jpg',
+    encuadre: 'center 20%',
+    alt: 'Andrea Jurado Narváez, Co-Founder de InitGrammers',
+  },
+  {
+    nombre: 'Edgar Alvarez',
+    cargo: 'Project Manager',
+    charla: 'Los líderes que transforman organizaciones',
+    foto: '/img/ponentes/edgar-alvarez.jpg',
+    encuadre: 'center 18%',
+    alt: 'Edgar Alvarez, Project Manager',
+  },
 ];
