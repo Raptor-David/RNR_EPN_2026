@@ -4,11 +4,18 @@ import { revelacionPrograma } from '../data/sitio';
 import CuentaRegresiva from './CuentaRegresiva.astro';
 
 /**
+ * Interruptor temporal: en false, la sección de ponentes se muestra
+ * completa (sin blur ni contador) sin importar la fecha. Para reactivar
+ * el bloqueo con cuenta regresiva más adelante, solo cambia esto a true.
+ */
+const contadorActivo = false;
+
+/**
  * Mismo mecanismo de doble comprobación que usa el Programa: en el build y
  * en el navegador. Usa la misma fecha/hora de revelación (23/09, 12h00).
  */
 const objetivo = Date.parse(revelacionPrograma);
-const yaRevelado = Number.isFinite(objetivo) && Date.now() >= objetivo;
+const yaRevelado = !contadorActivo || (Number.isFinite(objetivo) && Date.now() >= objetivo);
 ---
 
 <section id="ponentes" class="seccion">

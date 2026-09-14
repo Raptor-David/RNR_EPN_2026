@@ -4,12 +4,19 @@ import { revelacionPrograma } from '../data/sitio';
 import CuentaRegresiva from './CuentaRegresiva.astro';
 
 /**
+ * Interruptor temporal: en false, el cronograma se muestra completo
+ * (sin blur ni contador) sin importar la fecha. Para reactivar el
+ * bloqueo con cuenta regresiva más adelante, solo cambia esto a true.
+ */
+const contadorActivo = false;
+
+/**
  * Doble comprobación: en el build y en el navegador.
  * Si el sitio se despliega después del 23/09 a las 12h00, la cortina
  * ni siquiera se imprime en el HTML.
  */
 const objetivo = Date.parse(revelacionPrograma);
-const yaRevelado = Number.isFinite(objetivo) && Date.now() >= objetivo;
+const yaRevelado = !contadorActivo || (Number.isFinite(objetivo) && Date.now() >= objetivo);
 ---
 
 <section id="programa" class="seccion seccion--gris">
