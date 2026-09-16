@@ -117,6 +117,23 @@ export const programa: Dia[] = [
         tipo: 'sesion',
         hora: '15H00 – 16H00',
         titulo: 'Recorrido técnico',
+        subitems: [
+          {
+            hora: 'Opción 1',
+            titulo: 'Laboratorio de Ópticas — Facultad de Ingeniería Eléctrica y Electrónica',
+            detalle: 'Dr. Christian Tipantuña',
+          },
+          {
+            hora: 'Opción 2',
+            titulo: 'Laboratorio de ATA — Facultad de Ingeniería Mecánica',
+            detalle: 'Dr. Esteban Valencia',
+          },
+          {
+            hora: 'Opción 3',
+            titulo: 'Laboratorio de Biomedicina',
+            detalle: 'Dr. William Venegas',
+          },
+        ],
       },
       { tipo: 'pausa', texto: '16H00 – 16H30 · Coffee break — preparación para la feria de ramas' },
       {
