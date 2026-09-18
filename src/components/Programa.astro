@@ -62,7 +62,7 @@ const yaRevelado = !contadorActivo || (Number.isFinite(objetivo) && Date.now() >
                       {item.subitems && (
                         <div class="subitems">
                           {item.subitems.map((sub) => (
-                            <div class="subitem">
+                            <div class:list={['subitem', sub.acento && `subitem--${sub.acento}`]}>
                               <span class="subitem__hora">{sub.hora}</span>
                               <div>
                                 <p class="subitem__titulo">{sub.titulo}</p>
@@ -260,13 +260,7 @@ const yaRevelado = !contadorActivo || (Number.isFinite(objetivo) && Date.now() >
 
   /* Subitems */
   .subitems {
-    border-left: 3px solid var(--linea);
-    margin: 8px 0 2px 4px;
-    padding-left: 12px;
-  }
-
-  .fila--ambar .subitems {
-    border-left-color: #e9cfa8;
+    margin: 4px 0 0;
   }
 
   .subitem {
@@ -287,45 +281,80 @@ const yaRevelado = !contadorActivo || (Number.isFinite(objetivo) && Date.now() >
 
   @media (min-width: 420px) {
     .subitem {
-      grid-template-columns: 84px 1fr;
-      gap: 10px;
+      grid-template-columns: 104px 1fr;
+      gap: 12px;
     }
   }
 
   .subitem__hora {
-    font-size: 12.5px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
     color: var(--azul-700);
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
   }
 
+  @media (min-width: 420px) {
+    .subitem__hora {
+      font-size: 14px;
+    }
+  }
+
   .fila--ambar .subitem__hora {
     color: var(--ambar-texto-2);
-    font-weight: 700;
   }
 
   .subitem__titulo {
     margin: 0;
-    font-size: 15px;
+    font-size: 16px;
+    font-weight: 600;
     color: var(--tinta);
-    line-height: 1.35;
+    line-height: 1.3;
   }
 
   .fila--ambar .subitem__titulo {
     color: var(--ambar-texto);
-    font-weight: 600;
   }
 
   .subitem__detalle {
-    margin: 1px 0 0;
-    font-size: 13px;
+    margin: 2px 0 0;
+    font-size: 14px;
     font-style: italic;
     color: var(--tinta-3);
   }
 
   .fila--ambar .subitem__detalle {
     color: var(--ambar-texto-2);
+  }
+
+  /* Acento individual de un subitem (independiente del acento de la fila) */
+  .subitem--ambar {
+    background: var(--ambar-fondo);
+    border-left: 4px solid var(--ambar-borde);
+    padding: 8px 10px;
+    margin: 2px 0;
+    border-bottom: none;
+  }
+
+  .subitem--ambar .subitem__hora {
+    color: #6e3100;
+  }
+
+  .subitem--ambar .subitem__titulo {
+    color: var(--ambar-texto);
+    font-weight: 700;
+  }
+
+  .subitem--ambar .subitem__detalle {
+    color: var(--ambar-texto-2);
+  }
+
+  .subitem--cyan {
+    background: var(--gris);
+    border-left: 4px solid var(--cyan);
+    padding: 8px 10px;
+    margin: 2px 0;
+    border-bottom: none;
   }
 </style>
 

@@ -7,6 +7,8 @@ export type Subitem = {
   hora: string;
   titulo: string;
   detalle?: string;
+  /** Resalta el subitem (p. ej. bienvenidas oficiales). */
+  acento?: 'ambar' | 'cyan';
 };
 
 export type Item =
@@ -53,32 +55,36 @@ export const programa: Dia[] = [
         hora: '9H00 – 11H00',
         titulo: 'Inauguración de la Reunión Nacional de Ramas',
         detalle: 'Conduce: Voluntario 1',
-        acento: 'ambar',
         subitems: [
           {
             hora: '9H00 – 9H10',
-            titulo: 'Palabras de bienvenida — Escuela Politécnica Nacional',
-            detalle: 'Dra. Valentina Ramos Ramos · Vicerrectora de Docencia',
+            titulo: 'Palabras de bienvenida — Rama Estudiantil EPN',
+            detalle: 'Elias Viteri · Presidente de la Rama Estudiantil EPN',
+            acento: 'ambar',
           },
           {
             hora: '9H10 – 9H20',
-            titulo: 'Palabras de bienvenida — IEEE Ecuador Section',
-            detalle: 'Dr. Julio Barzola-Monteses · Presidente Sección Ecuador',
+            titulo: 'Palabras de bienvenida — Escuela Politécnica Nacional',
+            detalle: 'Dra. Valentina Ramos Ramos · Vicerrectora de Docencia',
+            acento: 'ambar',
           },
           {
             hora: '9H20 – 9H30',
-            titulo: 'Palabras de bienvenida — Rama Estudiantil EPN',
-            detalle: 'Elias Viteri · Presidente de la Rama Estudiantil EPN',
+            titulo: 'Palabras de bienvenida — IEEE Ecuador Section',
+            detalle: 'Dr. Julio Barzola-Monteses · Presidente Sección Ecuador',
+            acento: 'ambar',
           },
           {
             hora: '9H45 – 10H00',
             titulo: 'PMI — Convenio',
             detalle: 'Greysi Fairuths Ramírez · PMO & Delivery Manager, IEEE Section Ecuador',
+            acento: 'ambar',
           },
           {
             hora: '10H00 – 10H30',
             titulo: 'Intervención musical',
             detalle: 'Coro Politécnico',
+            acento: 'ambar',
           },
           {
             hora: '10H30 – 11H00',
@@ -96,8 +102,8 @@ export const programa: Dia[] = [
       {
         tipo: 'sesion',
         hora: '12H00 – 12H30',
-        titulo: 'Taller Sight',
-        detalle: 'Conduce: Sight Sección Ecuador',
+        titulo: 'SIGHT CHALLENGE 2026',
+        detalle: 'Ing. Santiago Huera',
       },
       {
         tipo: 'sesion',
@@ -115,23 +121,34 @@ export const programa: Dia[] = [
       },
       {
         tipo: 'sesion',
+        hora: '14H45 – 14H50',
+        titulo: 'Intervención de RAS Ecuador',
+        detalle: 'Conduce: RAS Ecuador',
+        acento: 'ambar',
+      },
+      {
+        tipo: 'sesion',
         hora: '15H00 – 16H00',
         titulo: 'Recorrido técnico',
+        acento: 'cyan',
         subitems: [
           {
             hora: 'Opción 1',
             titulo: 'Laboratorio de Ópticas — Facultad de Ingeniería Eléctrica y Electrónica',
             detalle: 'Dr. Christian Tipantuña',
+            acento: 'cyan',
           },
           {
             hora: 'Opción 2',
             titulo: 'Laboratorio de ATA — Facultad de Ingeniería Mecánica',
             detalle: 'Dr. Esteban Valencia',
+            acento: 'cyan',
           },
           {
             hora: 'Opción 3',
             titulo: 'Laboratorio de Biomedicina',
             detalle: 'Dr. William Venegas',
+            acento: 'cyan',
           },
         ],
       },
@@ -197,32 +214,33 @@ export const programa: Dia[] = [
       },
       {
         tipo: 'sesion',
-        hora: '9H30 – 10H30',
-        titulo: 'Gincana',
-        detalle: 'Ing. Víctor Echeverría',
+        hora: '9H30 – 10H00',
+        titulo: 'Conversatorio Young Professionals',
+        detalle: 'Pedro Pineda',
       },
-      { tipo: 'pausa', texto: '10H30 – 11H00 · Coffee break' },
+      { tipo: 'pausa', texto: '10H00 – 10H30 · Coffee break' },
       {
         tipo: 'sesion',
-        hora: '11H00 – 11H30',
-        titulo: 'Conversatorio — YP',
-      },
-      {
-        tipo: 'sesion',
-        hora: '11H30 – 12H15',
+        hora: '10H30 – 11H15',
         titulo: 'Taller — WIE',
       },
       {
         tipo: 'sesion',
-        hora: '12H15 – 12H35',
+        hora: '11H15 – 11H35',
         titulo: 'Charla',
         detalle: 'MSc. Alcibar Yánez · Tesorero IEEE Ecuador Section',
       },
       {
         tipo: 'sesion',
-        hora: '12H35 – 13H00',
+        hora: '11H35 – 12H00',
         titulo: 'Charla',
         detalle: 'Dr. Julio Barzola-Monteses · Presidente Sección Ecuador',
+      },
+      {
+        tipo: 'sesion',
+        hora: '12H00 – 13H00',
+        titulo: 'Actividad IEEE Entrepreneurship',
+        detalle: 'Pedro Pineda',
       },
       {
         tipo: 'sesion',
@@ -235,15 +253,9 @@ export const programa: Dia[] = [
       { tipo: 'titulo', texto: 'Tarde' },
       {
         tipo: 'sesion',
-        hora: '15H00 – 15H30',
-        titulo: 'Psicólogo',
-        detalle: 'Amigo de Majo',
-      },
-      {
-        tipo: 'sesion',
-        hora: '15H30 – 16H00',
-        titulo: 'Charla por definirse',
-        detalle: 'Por definirse',
+        hora: '15H00 – 16H00',
+        titulo: 'Actividad IEEE Entrepreneurship',
+        detalle: 'Pedro Pineda',
       },
       {
         tipo: 'sesion',
