@@ -1,4 +1,23 @@
 ---
+const capitulos = [
+  {
+    src: '/img/capitulo-cas-eds.png',
+    alt: 'IEEE CAS & EDS Ecuador Joint Chapter',
+  },
+  {
+    src: '/img/capitulo-css-ies.png',
+    alt: 'IEEE CSS & IES Ecuador Joint Chapter',
+  },
+  {
+    src: '/img/capitulo-pes.png',
+    alt: 'IEEE PES Ecuador Chapter',
+  },
+  {
+    src: '/img/capitulo-ras.png',
+    alt: 'IEEE RAS Ecuador Chapter',
+  },
+];
+
 const marcas = [
   {
     src: '/img/logo-ieee-seccion-ecuador.png',
@@ -32,6 +51,17 @@ const marcas = [
   <div class="contenedor">
     <h2 class="titulo-seccion" data-anim>Organizan y auspician</h2>
     <div class="regla" data-anim></div>
+
+    <p class="capitulos__titulo" data-anim>Capítulos que apoyan esta edición</p>
+    <div class="rejilla rejilla--capitulos">
+      {
+        capitulos.map((c, i) => (
+          <div class="celda celda--capitulo" data-anim data-anim-delay={String(Math.min(i + 1, 4))}>
+            <img src={c.src} alt={c.alt} loading="lazy" decoding="async" />
+          </div>
+        ))
+      }
+    </div>
 
     <div class="rejilla">
       {
@@ -93,5 +123,43 @@ const marcas = [
     letter-spacing: 0.06em;
     color: #7a7f85;
     line-height: 1.4;
+  }
+
+  /* Capítulos destacados: aportaron para tener su propio espacio */
+  .capitulos__titulo {
+    margin: 0 0 14px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--azul-700);
+  }
+
+  .rejilla--capitulos {
+    margin-bottom: clamp(28px, 4vw, 40px);
+    padding-bottom: clamp(24px, 3vw, 34px);
+    border-bottom: 1px solid var(--linea);
+  }
+
+  .celda--capitulo {
+    background: var(--blanco);
+    border: 1px solid var(--linea);
+    border-top: 4px solid var(--azul-700);
+    height: 130px;
+    box-shadow: 0 6px 18px rgba(0, 98, 155, 0.1);
+  }
+
+  .celda--capitulo img {
+    max-height: 92px;
+  }
+
+  @media (min-width: 700px) {
+    .celda--capitulo {
+      height: 150px;
+    }
+
+    .celda--capitulo img {
+      max-height: 108px;
+    }
   }
 </style>
