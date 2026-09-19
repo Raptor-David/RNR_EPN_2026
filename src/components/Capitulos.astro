@@ -1,0 +1,84 @@
+---
+const capitulos = [
+  {
+    src: '/img/capitulo-cas-eds.png',
+    alt: 'IEEE CAS & EDS Ecuador Joint Chapter',
+  },
+  {
+    src: '/img/capitulo-css-ies.png',
+    alt: 'IEEE CSS & IES Ecuador Joint Chapter',
+  },
+  {
+    src: '/img/capitulo-pes.png',
+    alt: 'IEEE PES Ecuador Chapter',
+  },
+  {
+    src: '/img/capitulo-ras.png',
+    alt: 'IEEE RAS Ecuador Chapter',
+  },
+];
+---
+
+<section id="capitulos" class="seccion seccion--gris">
+  <div class="contenedor">
+    <h2 class="titulo-seccion" data-anim>Capítulos que apoyan esta edición</h2>
+    <div class="regla" data-anim></div>
+
+    <div class="rejilla">
+      {
+        capitulos.map((c, i) => (
+          <div class="celda" data-anim data-anim-delay={String(Math.min(i + 1, 4))}>
+            <img src={c.src} alt={c.alt} loading="lazy" decoding="async" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .rejilla {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  @media (min-width: 700px) {
+    .rejilla {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: clamp(14px, 2vw, 22px);
+    }
+  }
+
+  .celda {
+    background: var(--blanco);
+    border: 1px solid var(--linea);
+    border-top: 4px solid var(--azul-700);
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 98, 155, 0.1);
+  }
+
+  .celda img {
+    display: block;
+    max-width: 100%;
+    max-height: 92px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  @media (min-width: 700px) {
+    .celda {
+      height: 150px;
+    }
+
+    .celda img {
+      max-height: 108px;
+    }
+  }
+</style>
