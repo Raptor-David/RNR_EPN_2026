@@ -9,7 +9,7 @@ export const sitio = {
   edicion: 'XXII',
   descripcion:
     'XXII Reunión Nacional de Ramas Estudiantiles IEEE. Del 25 al 27 de septiembre de 2026 en la Escuela Politécnica Nacional, Quito, Ecuador.',
-  organiza: 'Rama Estudiantil EPN · IEEE Ecuador Section',
+  organiza: 'Rama Estudiantil EPN · IEEE Ecuador Section · IEEE Student Ecuador',
   fechas: '25 – 27 de septiembre de 2026',
   fechasLargas: '25, 26 y 27 de septiembre de 2026',
   sede: 'Escuela Politécnica Nacional · Quito, Ecuador',
