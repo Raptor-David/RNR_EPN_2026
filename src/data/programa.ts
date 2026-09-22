@@ -117,7 +117,7 @@ export const programa: Dia[] = [
         tipo: 'sesion',
         hora: '14H15 – 14H45',
         titulo: 'Charla técnica',
-        detalle: 'Andrea Jurado Narváez · Co-Founder at InitGrammers',
+        detalle: 'Andrea Jurado Narváez · Founder at InitGrammers',
       },
       {
         tipo: 'sesion',
@@ -141,7 +141,7 @@ export const programa: Dia[] = [
           {
             hora: 'Opción 2',
             titulo: 'Laboratorio de ATA — Facultad de Ingeniería Mecánica',
-            detalle: 'Dr. Esteban Valencia',
+            detalle: 'Dr. Esteban Valencia · Dr. Víctor Hugo Hidalgo',
             acento: 'cyan',
           },
           {
@@ -208,21 +208,16 @@ export const programa: Dia[] = [
       },
       {
         tipo: 'sesion',
-        hora: '9H00 – 9H30',
-        titulo: 'Industria 5.0',
-        detalle: 'Ing. Edgar Pineda · CEC',
-      },
-      {
-        tipo: 'sesion',
-        hora: '9H30 – 10H00',
-        titulo: 'Conversatorio Young Professionals',
-        detalle: 'Pedro Pineda',
+        hora: '9H00 – 10H00',
+        titulo: 'Gincana',
+        detalle: 'Ing. Víctor Echeverría',
       },
       { tipo: 'pausa', texto: '10H00 – 10H30 · Coffee break' },
       {
         tipo: 'sesion',
         hora: '10H30 – 11H15',
         titulo: 'Taller — WIE',
+        detalle: 'Marcela Gallegos Altamirano',
       },
       {
         tipo: 'sesion',
@@ -239,8 +234,8 @@ export const programa: Dia[] = [
       {
         tipo: 'sesion',
         hora: '12H00 – 13H00',
-        titulo: 'Actividad IEEE Entrepreneurship',
-        detalle: 'Pedro Pineda',
+        titulo: 'SIGHT CHALLENGE 2026',
+        detalle: 'Continuación · Ing. Santiago Huera',
       },
       {
         tipo: 'sesion',
@@ -254,8 +249,8 @@ export const programa: Dia[] = [
       {
         tipo: 'sesion',
         hora: '15H00 – 16H00',
-        titulo: 'Actividad IEEE Entrepreneurship',
-        detalle: 'Pedro Pineda',
+        titulo: 'Los líderes que transforman organizaciones',
+        detalle: 'Ing. Edgar Pineda · CEC',
       },
       {
         tipo: 'sesion',

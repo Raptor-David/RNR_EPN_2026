@@ -1,0 +1,91 @@
+---
+const consejero = {
+  nombre: 'Dr. Fabián Pérez',
+  cargo: 'Consejero · Rama Estudiantil EPN',
+  foto: '/img/ponentes/fabian-perez.jpg',
+  encuadre: 'center 28%',
+  alt: 'Dr. Fabián Pérez, Consejero de la Rama Estudiantil IEEE EPN',
+};
+---
+
+<section id="consejero" class="seccion">
+  <div class="contenedor">
+    <h2 class="titulo-seccion" data-anim>Consejero de la Rama Estudiantil</h2>
+    <div class="regla" data-anim></div>
+
+    <article class="tarjeta" data-anim data-anim-delay="1">
+      <img
+        class="tarjeta__foto"
+        src={consejero.foto}
+        alt={consejero.alt}
+        loading="lazy"
+        decoding="async"
+        style={`object-position:${consejero.encuadre}`}
+      />
+      <div class="tarjeta__cuerpo">
+        <p class="tarjeta__nombre">{consejero.nombre}</p>
+        <p class="tarjeta__cargo">{consejero.cargo}</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .tarjeta {
+    max-width: 520px;
+    margin: 0 auto;
+    border: 1px solid var(--linea);
+    border-top: 4px solid var(--azul-700);
+    background: var(--blanco);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 26px rgba(0, 40, 85, 0.1);
+  }
+
+  @media (min-width: 480px) {
+    .tarjeta {
+      flex-direction: row;
+    }
+  }
+
+  .tarjeta__foto {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-bottom: 1px solid var(--linea);
+    background: var(--gris);
+  }
+
+  @media (min-width: 480px) {
+    .tarjeta__foto {
+      width: 200px;
+      aspect-ratio: 1 / 1;
+      border-bottom: none;
+      border-right: 1px solid var(--linea);
+      flex-shrink: 0;
+    }
+  }
+
+  .tarjeta__cuerpo {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .tarjeta__nombre {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--azul-900);
+    line-height: 1.25;
+  }
+
+  .tarjeta__cargo {
+    margin: 4px 0 0;
+    font-size: 14.5px;
+    color: var(--tinta-3);
+    line-height: 1.45;
+  }
+</style>
