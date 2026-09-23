@@ -7,8 +7,8 @@ export type Subitem = {
   hora: string;
   titulo: string;
   detalle?: string;
-  /** Resalta el subitem (p. ej. bienvenidas oficiales). */
-  acento?: 'ambar' | 'cyan';
+  /** Resalta el subitem (p. ej. bienvenidas oficiales, intervenciones de auspiciantes). */
+  acento?: 'ambar' | 'cyan' | 'morado';
 };
 
 export type Item =
@@ -18,8 +18,8 @@ export type Item =
       titulo: string;
       detalle?: string;
       nota?: string;
-      /** Resalta la fila (inauguración, foto oficial, cena de gala). */
-      acento?: 'ambar' | 'cyan';
+      /** Resalta la fila (inauguración, foto oficial, cena de gala, intervenciones de auspiciantes). */
+      acento?: 'ambar' | 'cyan' | 'morado';
       subitems?: Subitem[];
     }
   | {
@@ -90,7 +90,7 @@ export const programa: Dia[] = [
             hora: '10H05 – 10H20',
             titulo: 'Intervención de PES Ecuador',
             detalle: 'Conduce: IEEE PES Ecuador Chapter',
-            acento: 'ambar',
+            acento: 'morado',
           },
           {
             hora: '10H30 – 11H00',
@@ -130,7 +130,7 @@ export const programa: Dia[] = [
         hora: '14H45 – 14H50',
         titulo: 'Intervención de RAS Ecuador',
         detalle: 'Conduce: RAS Ecuador',
-        acento: 'ambar',
+        acento: 'morado',
       },
       {
         tipo: 'sesion',
@@ -223,7 +223,7 @@ export const programa: Dia[] = [
         hora: '9H50 – 10H00',
         titulo: 'Intervención de CAS & EDS Ecuador',
         detalle: 'Conduce: IEEE CAS & EDS Ecuador Joint Chapter',
-        acento: 'ambar',
+        acento: 'morado',
       },
       { tipo: 'pausa', texto: '10H00 – 10H30 · Coffee break' },
       {
@@ -270,7 +270,7 @@ export const programa: Dia[] = [
         hora: '16H00 – 16H10',
         titulo: 'Intervención de CSS & IES Ecuador',
         detalle: 'Conduce: IEEE CSS & IES Ecuador Joint Chapter',
-        acento: 'ambar',
+        acento: 'morado',
       },
       {
         tipo: 'sesion',

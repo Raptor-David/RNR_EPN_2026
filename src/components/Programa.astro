@@ -258,6 +258,25 @@ const yaRevelado = !contadorActivo || (Number.isFinite(objetivo) && Date.now() >
     border-bottom: none;
   }
 
+  .fila--morado {
+    background: var(--morado-fondo);
+    border-left: 6px solid var(--morado-borde);
+    padding: 12px 14px;
+    margin: 12px 0;
+    border-bottom: none;
+  }
+
+  .fila--morado .fila__hora {
+    color: var(--morado-texto-2);
+  }
+  .fila--morado .fila__titulo {
+    color: var(--morado-texto);
+    font-weight: 700;
+  }
+  .fila--morado .fila__detalle {
+    color: var(--morado-texto-2);
+  }
+
   /* Subitems */
   .subitems {
     margin: 4px 0 0;
@@ -355,6 +374,25 @@ const yaRevelado = !contadorActivo || (Number.isFinite(objetivo) && Date.now() >
     padding: 8px 10px;
     margin: 2px 0;
     border-bottom: none;
+  }
+
+  .subitem--morado {
+    background: var(--morado-fondo);
+    border-left: 4px solid var(--morado-borde);
+    padding: 8px 10px;
+    margin: 2px 0;
+    border-bottom: none;
+  }
+
+  .subitem--morado .subitem__hora {
+    color: var(--morado-texto-2);
+  }
+  .subitem--morado .subitem__titulo {
+    color: var(--morado-texto);
+    font-weight: 700;
+  }
+  .subitem--morado .subitem__detalle {
+    color: var(--morado-texto-2);
   }
 </style>
 
