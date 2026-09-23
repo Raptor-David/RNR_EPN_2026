@@ -214,16 +214,16 @@ export const programa: Dia[] = [
       },
       {
         tipo: 'sesion',
-        hora: '9H00 – 9H50',
-        titulo: 'Gincana',
-        detalle: 'Ing. Víctor Echeverría',
-      },
-      {
-        tipo: 'sesion',
-        hora: '9H50 – 10H00',
+        hora: '9H00 – 9H10',
         titulo: 'Intervención de CAS & EDS Ecuador',
         detalle: 'Conduce: IEEE CAS & EDS Ecuador Joint Chapter',
         acento: 'morado',
+      },
+      {
+        tipo: 'sesion',
+        hora: '9H10 – 10H00',
+        titulo: 'Conversatorio — YP',
+        detalle: 'Steven Molina',
       },
       { tipo: 'pausa', texto: '10H00 – 10H30 · Coffee break' },
       {
