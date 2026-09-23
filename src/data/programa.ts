@@ -81,9 +81,15 @@ export const programa: Dia[] = [
             acento: 'ambar',
           },
           {
-            hora: '10H00 – 10H30',
+            hora: '10H00 – 10H05',
             titulo: 'Intervención musical',
             detalle: 'Coro Politécnico',
+            acento: 'ambar',
+          },
+          {
+            hora: '10H05 – 10H20',
+            titulo: 'Intervención de PES Ecuador',
+            detalle: 'Conduce: IEEE PES Ecuador Chapter',
             acento: 'ambar',
           },
           {
@@ -208,9 +214,16 @@ export const programa: Dia[] = [
       },
       {
         tipo: 'sesion',
-        hora: '9H00 – 10H00',
+        hora: '9H00 – 9H50',
         titulo: 'Gincana',
         detalle: 'Ing. Víctor Echeverría',
+      },
+      {
+        tipo: 'sesion',
+        hora: '9H50 – 10H00',
+        titulo: 'Intervención de CAS & EDS Ecuador',
+        detalle: 'Conduce: IEEE CAS & EDS Ecuador Joint Chapter',
+        acento: 'ambar',
       },
       { tipo: 'pausa', texto: '10H00 – 10H30 · Coffee break' },
       {
@@ -254,11 +267,18 @@ export const programa: Dia[] = [
       },
       {
         tipo: 'sesion',
-        hora: '16H00 – 18H00',
+        hora: '16H00 – 16H10',
+        titulo: 'Intervención de CSS & IES Ecuador',
+        detalle: 'Conduce: IEEE CSS & IES Ecuador Joint Chapter',
+        acento: 'ambar',
+      },
+      {
+        tipo: 'sesion',
+        hora: '16H10 – 18H10',
         titulo: 'Feria de ciudades',
         detalle: 'IEEE Student Ecuador Section',
       },
-      { tipo: 'pausa', texto: '17H00 – 17H30 · Traslado Hotel 6 de Diciembre' },
+      { tipo: 'pausa', texto: '17H10 – 17H40 · Traslado Hotel 6 de Diciembre' },
       {
         tipo: 'sesion',
         hora: '19H00 – 23H00',
