@@ -236,13 +236,13 @@ export const programa: Dia[] = [
         tipo: 'sesion',
         hora: '11H15 – 11H35',
         titulo: 'Charla',
-        detalle: 'MSc. Alcibar Yánez · Tesorero IEEE Ecuador Section',
+        detalle: 'Dr. Julio Barzola-Monteses · Presidente Sección Ecuador',
       },
       {
         tipo: 'sesion',
         hora: '11H35 – 12H00',
         titulo: 'Charla',
-        detalle: 'Dr. Julio Barzola-Monteses · Presidente Sección Ecuador',
+        detalle: 'MSc. Alcibar Yánez · Tesorero IEEE Ecuador Section',
       },
       {
         tipo: 'sesion',
@@ -256,14 +256,14 @@ export const programa: Dia[] = [
         titulo: 'Traslado al almuerzo',
         nota: 'El protocolo de flujo y conteo consiste en que los voluntarios se organicen formando pasillos humanos para guiar de manera ordenada a los asistentes desde las salidas del teatro hasta el Policomedor, aplicando un sistema de desalojo escalonado por secciones para evitar aglomeraciones, mientras que el personal designado se encarga de registrar de forma precisa el número total de personas que transcurren durante el traslado.',
       },
-      { tipo: 'pausa', texto: '13H15 – 14H45 · Almuerzo' },
-      { tipo: 'pausa', texto: '14H45 – 15H00 · Traslado - CEC' },
+      { tipo: 'pausa', texto: '13H15 – 14H30 · Almuerzo y traslado' },
+      { tipo: 'pausa', texto: '14H30 – 14H45 · Traslado - CEC' },
       { tipo: 'titulo', texto: 'Tarde' },
       {
         tipo: 'sesion',
         hora: '15H00 – 16H00',
         titulo: 'Los líderes que transforman organizaciones',
-        detalle: 'Ing. Edgar Pineda · CEC',
+        detalle: 'Edgar Alvarez · Project Manager',
       },
       {
         tipo: 'sesion',
