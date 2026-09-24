@@ -90,10 +90,12 @@ const capitulos = [
     color: var(--tinta-3);
   }
 
-  /* Nivel 1 — Strategic Partner: el mayor aporte, la tarjeta más visible */
+  /* Nivel 1 — Strategic Partner: el mayor aporte, tarjeta dorada y la más visible */
   .celda--strategic {
-    border-top: 6px solid var(--azul-700);
-    box-shadow: 0 12px 30px rgba(0, 98, 155, 0.18);
+    background: linear-gradient(160deg, #fdf6e3 0%, var(--blanco) 55%);
+    border: 1px solid #e7c873;
+    border-top: 6px solid #c99a2e;
+    box-shadow: 0 12px 30px rgba(201, 154, 46, 0.28);
     height: 190px;
   }
 
@@ -103,7 +105,7 @@ const capitulos = [
 
   .celda--strategic .celda__nivel {
     font-size: 12px;
-    color: var(--azul-700);
+    color: #96730a;
   }
 
   @media (min-width: 700px) {
