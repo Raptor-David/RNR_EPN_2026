@@ -278,7 +278,7 @@ export const programa: Dia[] = [
         titulo: 'Feria de ciudades',
         detalle: 'IEEE Student Ecuador Section',
       },
-      { tipo: 'pausa', texto: '17H10 – 17H40 · Traslado Hotel 6 de Diciembre' },
+      { tipo: 'pausa', texto: '18H10 – 18H30 · Traslado Hotel 6 de Diciembre' },
       {
         tipo: 'sesion',
         hora: '19H00 – 23H00',
